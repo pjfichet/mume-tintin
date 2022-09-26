@@ -1,0 +1,27 @@
+#nop warrior.tt
+
+#var {protect} {};
+#alias {rescue} {
+	#if { "%0" == ""} {#send {rescue $protect}};
+	#else {#send {rescue %0}};
+}
+
+#alias {unprotect} {
+	#unhighlight {^%* {(barely |lightly |strongly )?}{charges|crushes|slashes|pounds|cleaves|pierces|stabs|shoots|smites|strikes|hits|whips} $protect{('s)?} {(right |left )?}%*{( hard| very hard)?}{( and tickles it| and shatters it)?}.$} {bold red};
+	#unhighlight {^%* sends $protect sprawling with a powerful bash.$} {bold red};
+	#unhighlight {^$protect swiftly dodges %*'{(s)?} attempt to {charge|crushe|slashe|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} {him|her}.$} {bold red};
+	#var {protect} {};
+	};
+
+
+#action {^You will now try to protect %*.$} {
+	unprotect;
+	#var {protect} {%1};
+	#highlight {^%* {(barely |lightly |strongly )?}{charges|crushes|slashes|pounds|cleaves|pierces|stabs|shoots|smites|strikes|hits|whips} $protect{('s)?} {(right |left )?}%*{( hard| very hard)?}{( and tickles it| and shatters it)?}.$} {bold red};
+	#highlight {^%* sends $protect sprawling with a powerful bash.$} {bold red};
+	#highlight {^$protect swiftly dodges %*'{(s)?} attempt to {charge|crushe|slashe|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} {him|her}.$} {bold red};
+};
+
+#action {^Very well, you concentrate on your own health.$} {unprotect};
+
+

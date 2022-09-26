@@ -1,0 +1,64 @@
+#nop config
+#read $src/config.tin
+
+#nop Substitutions
+#read $src/sub_herb.tin
+#read $src/sub_key.tin
+#read $src/sub_lockpick.tin
+#read $src/sub_mob.tin
+#read $src/sub_spell.tin
+#read $src/sub_spelltime.tin
+#read $src/sub_color.tin
+
+#nop Scripts
+#read $src/log.tin
+#read $src/misc.tin
+#read $src/target.tin
+#read $src/leader.tin
+#read $src/door.tin
+#read $src/label.tin
+#read $src/light.tin
+#read $src/xp.tin
+#read $src/path.tin
+#read $src/prompt.tin
+#read $src/alias.tin
+#read $src/action.tin
+#read $src/macros.tin
+
+
+#event {PROGRAM START} {
+	#nop session {mume} {193.134.218.98} {4242};
+	#session {mume} {127.0.0.1} {4000};
+	$name;
+	$pass;
+}
+
+#event {SESSION DISCONNECTED} {
+	#if {"%0" == "mume"} {
+		#gts;
+		#nop mapper exit();
+		#delay {1} {#end};
+	}
+}
+
+#nop action {^If you have never played MUME before, type NEW to create a new character,$} {
+	xpreset;
+}
+
+#action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
+	#send {\xFF\xFD\x01};
+	#send {change spam off};
+	#send {change brief on};
+	#send {change compact on};
+	#send {change wordwrap off};
+	#send {info CHARNAME: %M.};
+	#send {info XPCOUNTER: %x %t %X %T needed.};
+	#send {change wimpy $wimpy};
+	login;
+	#cr;
+};
+
+
+#nop Deal with blank lines
+#gag {^{(?:[\s]*)}$};
+

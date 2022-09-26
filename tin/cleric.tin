@@ -1,0 +1,59 @@
+#nop cleric aliases
+#nop quick
+#alias {i} {casttarget {blind} %0};
+#alias {z} {casttarget {dispel evil} {%0}};
+
+#nop cast
+#alias {cc} {showsend cast 'cure critic' %0};
+#alias {ce} {showsend cast 'dispel evil' %0};
+#alias {ch} {showsend cast 'heal' %0};
+#alias {ci} {showsend cast 'blind' %0};
+#alias {cm} {showsend cast 'summon' %0};
+#alias {co} {showsend cast 'word of recall'};
+#alias {cr} {showsend cast 'breath of briskness'};
+#alias {cs} {showsend cast 'cure serious' %0};
+#alias {ct} {showsend cast 'strength' %0};
+#alias {cu} {showsend cast 'burning hands' %0};
+#alias {cy} {showsend cast 'sanctuary' %0};
+#alias {cz} {showsend cast 'lightning bolt' %0};
+
+#alias {c1} {showsend cast 'blind' 1.$tgt[$tkey][name]};
+#alias {c2} {showsend cast 'blind' 2.$tgt[$tkey][name]};
+#alias {c3} {showsend cast 'blind' 3.$tgt[$tkey][name]};
+#alias {c4} {showsend cast 'blind' 4.$tgt[$tkey][name]};
+#alias {c5} {showsend cast 'blind' 5.$tgt[$tkey][name]};
+#alias {c6} {showsend cast 'blind' 6.$tgt[$tkey][name]};
+#alias {c7} {showsend cast 'blind' 7.$tgt[$tkey][name]};
+#alias {c8} {showsend cast 'blind' 8.$tgt[$tkey][name]};
+#alias {c9} {showsend cast 'blind' 9.$tgt[$tkey][name]};
+
+#alias {&} {showsend cast 'blind' 1.$tgt[$tkey][name]};
+#alias {é} {showsend cast 'blind' 2.$tgt[$tkey][name]};
+#alias {"} {showsend cast 'blind' 3.$tgt[$tkey][name]};
+#alias {'} {showsend cast 'blind' 4.$tgt[$tkey][name]};
+#alias {(} {showsend cast 'blind' 5.$tgt[$tkey][name]};
+#alias {-} {showsend cast 'blind' 6.$tgt[$tkey][name]};
+#alias {è} {showsend cast 'blind' 7.$tgt[$tkey][name]};
+#alias {_} {showsend cast 'blind' 8.$tgt[$tkey][name]};
+#alias {ç} {showsend cast 'blind' 9.$tgt[$tkey][name]};
+
+#alias {lcb} {showsend cast 'bless' $leader};
+#alias {lcc} {showsend cast 'cure critic' $leader};
+#alias {lch} {showsend cast 'heal' $leader};
+#alias {lcl} {showsend cast 'cure light' $leader};
+#alias {lccb} {showsend cast 'cure blindness' $leader};
+#alias {lcrp} {showsend cast 'remove poison' $leader};
+#alias {lcs} {showsend cast 'cure serious' $leader};
+#alias {lct} {showsend cast 'strength' $leader};
+#alias {lcy} {showsend cast 'sanctuary' $leader};
+
+#alias {ocb} {showsend cast 'bless' $follower};
+#alias {occ} {showsend cast 'cure critic' $follower};
+#alias {och} {showsend cast 'heal' $follower};
+#alias {ocl} {showsend cast 'cure light' $follower};
+#alias {occb} {showsend cast 'cure blindness' $follower};
+#alias {ocrp} {showsend cast 'remove poison' $follower};
+#alias {ocs} {showsend cast 'cure serious' $follower};
+#alias {oct} {showsend cast 'strength' $follower};
+#alias {ocy} {showsend cast 'sanctuary' $follower};
+

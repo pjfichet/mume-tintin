@@ -1,0 +1,25 @@
+#action {^You set fire to the corpse.$} {showsend cover pyre}
+
+#action {^Anarwen says 'Would you help me, %1?'} {
+	#if {"%1" == "$name"} {showsend say yes};
+	#else {#showme Triggers but %1 != $name !};
+};
+
+#action {^%* makes a strange sound{(?: but is suddenly very silent)?}, as you place %* in {his|her|its} back.$}
+	{#delay {.2} {report}};
+#action {^Suddenly %* stabs you in the back.$}
+	{#delay {.2} {report}};
+
+#action {^You look up towards the skies and start calling the mighty creatures.$} {
+	#var {eagling} {false};
+	#action {^In the sky you see {a Great Eagle|Gwaihir the Windlord} descending towards you!$} {
+		#var {eagling} {true};
+	};
+	#delay {80} {#showme <029>The eagle should arrive in 10s!<099>};
+	#delay {120} {
+		#if {"$eagling" == "false"} {#showme The eagle will not come.};
+		#unvar {eagling} {};
+	};
+};
+
+

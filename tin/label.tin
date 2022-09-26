@@ -1,0 +1,37 @@
+#var {letter[1]} {a}
+#var {letter[2]} {b}
+#var {letter[3]} {c}
+#var {letter[4]} {d}
+#var {letter[5]} {e}
+#var {letter[6]} {f}
+#var {letter[7]} {g}
+#var {letter[8]} {h}
+#var {letter[9]} {i}
+
+#var {numlabel} 0
+#alias {labelize} {
+	#math {numlabel} {$numlabel + 1};
+	#if {$numlabel >= 10} {#var {numlabel} {1}};
+	#var {label} {k$letter[$numlabel]};
+	#action {Ok.} {
+		#unaction {Ok.};
+		#line gag;
+		exam $label;
+		#showme Labelled $labelled $label;
+	};
+
+	#if {"%1" != ""} {
+		#var {labelled} {%1};
+		lab $labelled $label;
+	};
+	#else {
+		#action {^Exactly whom did you wish to give a label?} {
+			#unaction {^Exactly whom did you wish to give a label?};
+			#var {labelled} {$target};
+			lab $labelled $label;
+			#line gag;
+		};
+		lab $label;
+	};
+};
+

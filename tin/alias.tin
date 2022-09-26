@@ -1,0 +1,277 @@
+#nop common aliases
+
+#nop directions
+#alias {h} {showsend w};
+#alias {j} {showsend s};
+#alias {k} {showsend n};
+#alias {l} {showsend e};
+#alias {u} {showsend u};
+#alias {n} {showsend d};
+
+#alias {eh} {showsend escape w};
+#alias {ej} {showsend escape s};
+#alias {ek} {showsend escape n};
+#alias {el} {showsend escape e};
+#alias {eu} {showsend escape u};
+#alias {en} {showsend escape d};
+
+#nop quick
+#alias {a} {showsend assist}
+#alias {f} {#cr; showsend flee};
+#alias {m} {mood %0};
+#alias {q} {kill %0};
+#alias {,} {pursue};
+#alias {z} {stab %0};
+
+#nop alertness
+#alias {ap} {showsend change alertness paranoid};
+#alias {an} {showsend change alertness normal};
+
+#nop bash
+#alias {b} {showsend bash};
+#alias {ba} {va; bv};
+#alias {bd} {bash dis};
+#alias {bi} {vi; bv};
+#alias {bm} {vm; bv};
+#alias {bo} {vo; bv};
+#alias {bp} {vp; bv};
+#alias {br} {vr; bv};
+#alias {bt} {vt; bv};
+#alias {bv} {showsend bash $target};
+#alias {bw} {vw; bv};
+#alias {bz} {vz; bv};
+
+#nop cast
+#alias {cb} {showsend cast n 'bless' %0};
+#alias {cf} {castfood};
+#alias {cl} {showsend cast n 'cure light' %0};
+#alias {cn} {showsend change spellcasting normally; #var {spell_speed} {normal}}
+#alias {cq} {showsend change spellcasting quick; #var {spell_speed} {quick}}
+#alias {cw} {showsend cast n 'create water' %0};
+
+#alias {car} {showsend cast n 'armour'};
+#alias {ccd} {showsend cast n 'cure disease' %0};
+#alias {ccb} {showsend cast n 'cure blindness' %0};
+#alias {cde} {showsend cast n 'detect evil'};
+#alias {cld} {showsend cast n 'shield'};
+#alias {cpe} {showsend cast n 'protection from evil'};
+#alias {crp} {showsend cast n 'remove poison' %0};
+#alias {csh} {showsend cast n 'shroud'};
+#alias {csl} {showsend cast n 'sense life'};
+
+
+
+#nop door
+#alias {o} {door open %0};
+#alias {c} {door close %0};
+#alias {d} {door %0};
+#alias {da} {door a};
+#alias {dc} {door close %0};
+#alias {dn} {door knock %0};
+#alias {dk} {door block %0};
+#alias {dl} {door lock %0};
+#alias {do} {door open %0};
+#alias {dp} {door pick %0};
+#alias {dr} {door break %0};
+#alias {du} {door unlock %0};
+
+#nop drink
+#alias {dw} {drink water; pour water $flask};
+#alias {df} {drink $flask};
+
+#nop get
+#alias {gap} {showsend get plant};
+#alias {ga} {showsend get all};
+#alias {gac} {showsend get all corpse};
+#alias {gag} {showsend get all.coins all.corpse};
+#alias {gam} {gag; showsend get all.metal all.corpse; showsend get all.sword all.corpse}
+#alias {gal} {lightor; showsend look in corpse; lightoff_sneak};
+#alias {gah} {showsend give all h};
+
+#nop info
+#alias {affect} {info %f};
+#alias {age} {info Age: %a years, %N months and %n days.};
+#alias {weight} {info Carrying %C. %F};
+#alias {carry} {weight};
+#alias {align} {info %q};
+#alias {citizen} {info Citizen in %c.};
+#alias {level} {info Level: %l.};
+#alias {gold} {info %r};
+#alias {fame} {info War fame: %K.};
+
+#nop leader
+#alias {lcb} {showsend cast n 'bless' $leader};
+#alias {lcl} {showsend cast n 'cure light' $leader};
+#alias {lf} {showsend follow %1};
+#alias {ln} {leader none};
+#alias {lp} {#echo {protect $leader}; #send {protect $leader}};
+#alias {lr} {#echo {rescue $leader}; #send {rescue $leader}};
+#alias {ls} {showsend follow self};
+#alias {lt} {tell $leader %0};
+#alias {lw} {showsend wake $leader};
+#alias {lx} {lightor; showsend examine $leader; lightoff_sneak};
+
+#nop look around
+#alias {la} {showsend look around};
+
+#nop hide
+#alias {hq} {lightor; hide quick};
+#alias {ht} {lightor; hide thorough};
+
+#nop look
+#alias {ll} {lightor; look; exit; lightoff_sneak};
+
+#nop order charmies and mercs
+#alias {oa} {ask $follower assist};
+#alias {ob} {showsend bandage $follower};
+#alias {ocb} {showsend cast 'bless' $follower};
+#alias {ocl} {showsend cast 'cure light' $follower};
+#alias {oh} {ask $follower health};
+#alias {om} {ask $follower moves};
+#alias {or} {ask $follower ride %1};
+#alias {ot} {ask $follower time};
+#alias {ox} {showsend examine $follower};
+
+#nop path and go
+#alias {p} {pathstep};
+#alias {pd} {pathdeathshow};
+#alias {pf} {rlabel search %1};
+#alias {pg} {pathstep};
+#alias {pk} {pathmark};
+#alias {pm} {pathmarkshow};
+#alias {pp} {pathshow %0};
+#alias {pr} {pathrun %0};
+#alias {ps} {stop};
+
+#nop send q
+#alias {qq} {#send q};
+
+#nop report ride rest
+#alias {r} {report};
+#alias {rg} {report tg};
+#alias {rep} {reply %0};
+
+#alias {ra} {aba};
+#alias {ri} {showsend ride %0};
+#alias {rl} {lead %0};
+#alias {rz} {stand; lead %0; ride};
+
+#alias {rb} {showsend bandage %0};
+#alias {bc} {showsend butcher corpse};
+#alias {re} {showsend rest};
+#alias {rs} {showsend sleep};
+#alias {ws} {#showme {wake\; stand}; wake; stand};
+#alias {ru} {showsend burn corpse};
+#alias {ry} {togglelight};
+
+#alias {rq} {showsend reveal quick};
+#alias {rt} {showsend reveal thorough};
+#alias {fq} {showsend flush quick};
+#alias {ft} {showsend flush thorough};
+
+#nop score search scout sneak
+#alias {sd} {showsend reveal dagger};
+#alias {sg} {showsend reveal ginseng};
+#alias {sh} {showsend scout w};
+#alias {sj} {showsend scout s};
+#alias {sk} {showsend scout n};
+#alias {sl} {showsend scout e};
+#alias {sn} {showsend scout d};
+#alias {sri} {showsend seek rivendell};
+#alias {ss} {showsend sneak; lightoff};
+#alias {su} {showsend scout u};
+
+#nop shoot
+#alias {s} {weapon bow; showsend shoot $target};
+#alias {so} {showsend shoot};
+#alias {sr} {recover};
+#alias {sa} {get all.arrow; get all.arrow all.corpse; put all.arrow quiver};
+
+
+#alias {ssh} {lightor; showsend search w};
+#alias {ssj} {lightor; showsend search s};
+#alias {ssk} {lightor; showsend search n};
+#alias {ssl} {lightor; showsend search e};
+#alias {ssu} {lightor; showsend search u};
+#alias {ssn} {lightor; showsend search d};
+
+#nop tell
+#alias {tg} {tell group %0};
+#alias {te} {tell %0};
+
+#nop track
+#alias {tm} {lightor; showsend track man*};
+#alias {to} {lightor; showsend track orc*};
+#alias {tr} {lightor; showsend track};
+#alias {tt} {lightor; showsend track troll*};
+#alias {tk} {lightor; #if {"%1" != ""} {target %1}; showsend track $target};
+#alias {tw} {lightor; showsend track woman*};
+#alias {tz} {lightor; showsend track zaugurz*};
+#alias {tmo} {lightor; #if {"%1" != ""} {mount %1}; showsend track $mount};
+
+#nop target
+#alias {va} {target 1 animal};
+#alias {vd} {target 1 dunlending};
+#alias {vi} {itarget};
+#alias {vj} {target %1};
+#alias {vl} {labelize %1};
+#alias {vm} {target 1 man*};
+#alias {vo} {target 1 orc*};
+#alias {vp} {target 1 plant};
+#alias {vr} {rtarget};
+#alias {vt} {target 1 troll*};
+#alias {vw} {target 1 woman*};
+#alias {vx} {exam};
+#alias {vz} {target 1 zaugurz*};
+#alias {vvm} {target 1 man};
+#alias {vvo} {target 1 orc};
+#alias {vvt} {target 1 troll};
+
+#nop label
+#alias {vka} {target 1 ka};
+#alias {vkb} {target 1 kb};
+#alias {vkc} {target 1 kc};
+#alias {vkd} {target 1 kd};
+#alias {vke} {target 1 ke};
+#alias {vkf} {target 1 kf};
+#alias {vkg} {target 1 kg};
+#alias {vkh} {target 1 kh};
+#alias {vki} {target 1 ki};
+
+
+
+#alias {wm} {lightor; showsend where man*};
+#alias {wo} {lightor; showsend where orc*};
+#alias {wt} {lightor; showsend where troll*};
+#alias {wk} {lightor; #if {"%1" != ""} {target %1}; showsend where $target};
+#alias {ww} {lightor; showsend where woman*};
+#alias {wz} {lightor; showsend where zaugurz*};
+#alias {wmo} {lightor; #if {"%1" != ""} {mount %1}; showsend where $mount};
+
+
+#nop use tools
+#alias {azu} {scroll azure};
+#alias {bla} {scroll black};
+#alias {blu} {scroll blue};
+#alias {ebo} {scroll ebony};
+#alias {pur} {scroll purple};
+#alias {vel} {scroll vellum};
+
+
+#alias {ring} {use ring;}
+#alias {candle} {rem $weapon; get candle all; hold candle; use candle; wield $weapon};
+#alias {mir} {get miruvor $bag; drink miruvor};
+#alias {pbs} {use stone};
+#alias {nimble} {weapon nimble};
+#alias {elven} {weapon elven};
+#alias {slender} {weapon slender};
+#alias {dirk} {weapon dirk};
+#alias {thorn} {weapon thorn};
+#alias {runed} {weapon runed};
+#alias {sword} {weapon sword};
+#alias {bow} {weapon bow};
+#alias {smoke} {get pipe $bag; rem $weapon; hold pipe; sit; smoke pipe; stand; rem pipe; whield $weapon; put pipe $container;}
+#alias {lembas} {get lembas all; eat lembas};
+
+#nop yes
+#alias {yes} {showsend say yes};

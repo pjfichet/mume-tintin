@@ -1,0 +1,170 @@
+#alias showsend {
+	#send {%0};
+	#showme {<109>%0<099>};
+};
+#alias {date} {
+	#system {date};
+}
+#alias {src} {#read $src/%1.tin};
+
+#alias {sellall} {
+	#var {selllist} {%0};
+	#replace {selllist} { } {;};
+	#foreach {$selllist} {i} {sell all.$i};
+}
+
+#alias {mount} {
+	#var {mount} {%1};
+	#showme {mount: $mount.};
+}
+
+#alias {flask} {
+	#var {flask} {%1};
+	#showme {flask: $flask.};
+}
+
+#alias bag {
+	#var {bag} {%1};
+	#showme {bag: $bag.};
+};
+#alias {weapon} {
+	#if {"$weapon" != "%1"} {
+		get %1 $bag;
+		draw %1;
+		put $weapon $bag;
+		#var {weapon} {%1};
+	};
+};
+#alias mount {
+	#var {mount} {%1};
+	#showme {mount: $mount.};
+};
+
+#var mood {wimpy}
+#alias {mood} {
+	#if { "%0" != ""} {
+		#var {wimpy} {%0};
+		#nop echo {Change wimpy $wimpy\.};
+		#send {change wimpy $wimpy};
+	};
+	#else {
+		#if { "$mood" == "wimpy"} {
+			#echo {Change mood aggressive: $wimpy\.};
+			change mood aggressive;
+			#var mood {aggro};
+		};
+		#elseif { "$mood" == "aggro"} {
+			#echo {Change mood wimpy: $wimpy\.};
+			change mood wimpy;
+			#var mood {wimpy};
+		};
+	};
+};
+#var {spell_speed} {normal};
+#alias {rec} {
+	#if {"%0" != ""} {
+		#var {reclist} {%0};
+		#replace {reclist} { } {;};
+	};
+	#elseif {"$reclist" != ""} {
+		#showme {<109>$reclist<099>};
+		#foreach {$reclist} {i} {$i};
+	};
+	#else {#showme {Nothing is recorded.}};
+};
+
+#alias {rent} {
+	#if { "%0" == "" } {
+		info;
+		xp;
+		train all;
+		#action {^None of your skills needed refreshing.$} {#send {rent}};
+		#action {^No more skills need refreshing.$} {#send {rent}};
+	};
+	#else {
+		#send {rent %0};
+	};
+};
+
+#alias {chest} {
+	#if {"%0" != ""} {
+		#showme {<109>open chest\; look in chest\; get %1 chest<099>};
+		#send {open chest};
+		#send {look in chest};
+		#send {get %1 chest};
+	};
+	#else {
+		#showme {open chest\; look in chest};
+		#send {open chest};
+		#send {look in chest};
+	};
+};
+
+#alias {castfood} {
+	#action {^{A magic mushroom|Something} suddenly appears.$} {
+		eat mushroom;
+		#unaction {^{A magic mushroom|Something} suddenly appears.$};
+	};
+	showsend cast 'create food';
+}
+
+#alias {scroll} {
+	showsend get %1 all;
+	showsend recite %1 %2;
+};
+#alias {eemote} {
+	#var {emote} {%0};
+	#showme {<069>$name $emote<099>};
+	#send {emote $emote};
+};
+
+
+#alias burnweb {
+	rem $weapon;
+	rem lantern;
+	pour lantern web;
+	burn web;
+	wear lantern belt;
+	wield $weapon;
+};
+
+#alias {willow} {#showme hunting place:w 1:n 2:w 3:w 4:s 5:w 6:w 7:n 8:w dangerous:n deep:e deep:e willow.}
+
+#alias {changecolour} {
+	change colour achievement magenta;
+	change colour avoid-damage none;
+	change colour character none;
+	change colour code none;
+	change colour damage none;
+	change colour emote none;
+	change colour emphasis none;
+	change colour enemy bold white;
+	change colour exits none;
+	change colour header green;
+	change colour hit none;
+	change colour look green;
+	change colour magic magenta;
+	change colour miss none;
+	change colour movement-in none;
+	change colour movement-out none;
+	change colour narrate none;
+	change colour normal none;
+	change colour pray none;
+	change colour prompt none;
+	change colour room-desc none;
+	change colour say none;
+	change colour shout none;
+	change colour social cyan;
+	change colour song bold cyan;
+	change colour status green;
+	change colour tell none;
+	change colour weather cyan;
+	change colour yell bold cyan;
+	change colour zone-bad yellow;
+	change colour zone-evil red;
+	change colour zone-good green;
+	change colour zone-neutral white;
+	change colour zone-nice cyan;
+};
+
+

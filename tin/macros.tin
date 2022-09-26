@@ -1,0 +1,44 @@
+#nop directions
+#macro {ð} {h}
+#macro {\eh} {h}
+#macro {Û} {j}
+#macro {\ej} {j}
+#macro {Î} {k}
+#macro {\ek} {k}
+#macro {Ô} {l}
+#macro {\el} {l}
+#macro {¬} {n}
+#macro {\en} {n}
+#macro {ù} {u}
+#macro {\eu} {u}
+
+#nop movement
+#macro {¿} {,}
+#macro {\e,} {,}
+#macro {\ep} {p}
+#macro {\e\n} {#cr}
+
+#nop attack
+#macro {â} {a}
+#macro {\ea} {a}
+#macro {±} {f}
+#macro {\ef} {f}
+#macro {ö} {m}
+#macro {\em} {m}
+#macro {ä} {q}
+#macro {\eq} {q}
+#macro {«} {z}
+#macro {\ez} {z}
+#macro {î} {i}
+#macro {\ei} {i}
+#macro {\ey} {y}
+#macro {\er} {r}
+
+
+
+#nop door
+#macro {œ} {o};
+#macro {\eo} {o};
+#macro {©} {c};
+#macro {\ec} {c};
+

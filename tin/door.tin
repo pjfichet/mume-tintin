@@ -1,0 +1,73 @@
+#nop door.tin;
+
+#action {^The %w closes quietly.$} {#var {doorauto} {%1}}
+#action {^The %w {is|are} {open|closed}.$} {#var {doorauto} {%1}}
+#action {The %w {is|are} opened from the other side.$} {#var {doorauto} {%1}}
+#action {^The %w {blur|blurs} for a while.$} {#var {doorauto} {%1}}
+#action {^The %w is filled with a bright light.$} {#var {doorauto} {%1}}
+#action {opens the %w.$} {#var {doorauto} {%1}}
+#action {closes the %w.$} {#var {doorauto} {%1}}
+#action {^You skillfully discover a hidden %w.$} {#var {doorauto} {%1}}
+#action {^The %w {seem|seems} to be closed.$} {#var {doorauto} {%1}};
+#nop action {^*{.+}{Orc|Troll|Man|Woman|Elf|Half-Elf|Dwarf|Hobbit|Bear|Numenorean|N\xFAmen\xF3rean}* closes the %*.$} {
+	#var {doorauto} {%3};
+};
+#nop action {^*{.+}{Orc|Troll|Man|Woman|Elf|Half-Elf|Dwarf|Hobbit|Bear|Numenorean|N\xFAmen\xF3rean}* opens the %*.$} {
+	#var {doorauto} {%3};
+};
+
+#alias {doorname} {
+	#if {"$door" == "a"} {#var {door} {$doorauto}};
+	#elseif {"$door" == "h"} {#var {door} {w}};
+	#elseif {"$door" == "l"} {#var {door} {e}};
+	#elseif {"$door" == "j"} {#var {door} {s}};
+	#elseif {"$door" == "k"} {#var {door} {n}};
+	#elseif {"$door" == "u"} {#var {door} {u}};
+	#elseif {"$door" == "n"} {#var {door} {d}};
+}
+
+#var {dooraction} {};
+#alias {door} {
+	#nop {%1: action, %2 door name or direction};
+	#if {"%2" != ""} {
+		#var {door} {%2};
+		doorname;
+	};
+	#if {"%1" == "bar"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "bash"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "block"} {#var {dooraction} {cast 'block door'}};
+	#elseif {"%1" == "break"} {#var {dooraction} {cast 'break door'}};
+	#elseif {"%1" == "close"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "knock"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "lock"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "open"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "pick"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "unbar"} {#var {dooraction} {%1}};
+	#elseif {"%1" == "unlock"} {#var {dooraction} {%1}};
+	#elseif {"%1" != ""} {
+		#var {door} {%1};
+		doorname;
+	};	
+	#else {#showme {door: $door.}};
+
+	#if {"$dooraction" != ""} {
+		#showme $dooraction $door;
+		#regexp {$door} {^{n|e|s|w|u|d}$}
+			{#send {secretaction $dooraction $door}}
+			{#send {$dooraction $door}};
+	};
+	#var {dooraction} {};
+};
+
+#alias {bar} {door bar %0};
+#alias {dbash} {door bash %0};
+#alias {close} {door close %0};
+#alias {knock} {door knock %0};
+#alias {block} {door block %0};
+#alias {lock} {door lock %0};
+#alias {unbar} {door unbar %0};
+#alias {open} {door open %0};
+#alias {pick} {door pick %0};
+#alias {break} {door break %0};
+#alias {unlock} {door unlock %0};
+

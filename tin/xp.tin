@@ -1,0 +1,28 @@
+#var {gained_xp} {0}
+#var {gained_tp} {0}
+#var {session_xp} {0}
+#var {session_tp} {0}
+#var {needed_xp} {0}
+#var {needed_tp} {0}
+#var {old_xp} {0}
+#var {old_tp} {0}
+
+#action {^XPCOUNTER: %d %d %d %d %w.$} {
+	#if {$old_xp} {#math {gained_xp} {%1 - $old_xp}};
+	#if {$old_tp} {#math {gained_tp} {%2 - $old_tp}};
+	#math {session_xp} {$session_xp + $gained_xp};
+	#math {session_tp} {$session_tp + $gained_tp};
+	#var {old_xp} {%1};
+	#var {old_tp} {%2};
+	#var {needed_xp} {%3};
+	#var {needed_tp} {%4};
+	#if {"%5" == "xp"} {
+		#echo {Gained tp: $gained_tp, needed tp: $needed_tp, session tp: $session_tp.};
+		#echo {gained xp: $gained_xp, needed xp: $needed_xp, session xp: $session_xp.};
+	};
+	#else {#echo {Needed tp: $needed_tp, needed xp: $needed_xp.}};
+	#line gag;
+}
+
+#alias {xp} {#send {info XPCOUNTER: %x %t %X %T xp.}};
+

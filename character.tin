@@ -1,0 +1,37 @@
+#nop Sample character file
+
+#nop Your character data:
+#var {name} {my_login}
+#var {pass} {my_pasword}
+#var {wimpy} {40}
+
+#nop path to tintin files:
+#var {src} {/path/to/src}
+
+#nop main file
+#read $src/main.tin
+
+#nop Choose your class:
+#nop read $src/cleric.tin
+#nop read $src/mage.tin
+#nop read $src/warrior.tin
+
+#nop the following is executed at startup
+#alias {login} {	
+	weapon dagger;
+	flask skin;
+	bag backpack;
+	lightsource lantern;
+	lighton;
+};
+
+#nop define your emotes here:
+#alias {ebow} {eemote bows swiftly.};
+#alias {edie} {eemote dies, with a sigh.};
+#alias {eflee} {eemote shouts "FLEE !"};
+#alias {ehair} {eemote 's long hair flow on the wind.};
+#alias {eintriguing} {eemote raises an eyebrow, surprised.};
+#alias {elaugh} {eemote laughs with joy.};
+#alias {esmile} {eemote smiles with amuzement.};
+#alias {eno} {eemote does not seem to agree.; say no};
+#alias {eyes} {eemote nods softly; say yes};

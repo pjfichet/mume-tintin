@@ -1,0 +1,54 @@
+#nop target.tin
+
+#var {tkey} {1}
+#var {tgt[1][num]} {1};
+#var {tgt[1][name]} {animal};
+#var {target} {$tgt[$tkey][num]\.$tgt[$tkey][name]};
+
+#alias target {
+	#if {"%2" != ""} {
+		#var {tkey} {%1};
+		#var {tgt[$tkey][num]} {1};
+		#var {tgt[$tkey][name]} {%2};
+	};
+	#elseif {"%1" != ""} {
+		#var {tkey} {2};
+		#var {tgt[$tkey][num]} {1};
+		#var {tgt[$tkey][name]} {%1};
+	};
+	#var {target} {$tgt[$tkey][num]\.$tgt[$tkey][name]};
+	#showme {target: $target.};
+};
+
+#alias itarget {
+	#nop increase the target number;
+	#if { "%1" != ""} {
+		#var {tgt[$tkey][num]} {%1};
+	};
+	#else {
+		#math {tgt[$tkey][num]} {$tgt[$tkey][num] + 1};
+	};
+	target;
+};
+
+#alias rtarget {
+	#nop reset the tgt number to 1;
+	#var {tgt[$tkey][num]} {1};
+	target;
+};
+
+#alias {kill} {
+	#nop hit the target;
+	#if { "%0" != ""} {target %0};
+	showsend kill $target;
+};
+#alias {stab} {
+	#nop backstab the target;
+	#if { "%0" != ""} {target %0};
+	showsend backstab $target;
+};
+#alias {casttarget} {
+	#if {"%2" != ""} {target %2};
+	showsend cast '%1' $target;
+};
+

@@ -1,0 +1,50 @@
+#message	{ACTIONS} {OFF}
+#message	{ALIASES} {OFF}
+#message	{CLASSES} {OFF}
+#message	{DELAYS} {OFF}
+#message	{EVENTS} {OFF}
+#message	{FUNCTIONS} {OFF}
+#message	{GAGS} {OFF}
+#message	{HIGHLIGHTS} {OFF}
+#message	{MACROS} {OFF}
+#message	{PATHS} {OFF}
+#message	{PATHDIRS} {OFF}
+#message	{PROMPTS} {OFF}
+#message	{TABS} {OFF}
+#message	{TICKERS} {OFF}
+#message	{VARIABLES} {OFF}
+
+#config		{AUTO TAB}  {5000}
+#config		{BUFFER SIZE}  {10000}
+#config		{CHARSET}  {UTF-8}
+#config		{COLOR MODE} {ANSI}
+#config		{COLOR PATCH} {OFF}
+#config		{CONVERT META} {OFF}
+#config		{DEBUG TELNET} {OFF}
+#config		{MCCP} {OFF}
+#config		{LOG LEVEL} {HIGH}
+#config		{COMMAND COLOR}  {}
+#config		{COMMAND ECHO}  {ON}
+#config		{CONNECT RETRY}  {15}
+#config		{HISTORY SIZE}  {1000}
+#config		{LOG}  {RAW}
+#config		{PACKET PATCH}  {0.00}
+#config		{REPEAT CHAR}  {!}
+#config		{REPEAT ENTER}  {OFF}
+#config		{SCROLL LOCK}  {ON}
+#config		{SPEEDWALK}  {OFF}
+#config		{TINTIN CHAR}  {#}
+#config		{TAB WIDTH} {4}
+#config		{VERBATIM}  {OFF}
+#config		{VERBATIM CHAR}  {\}
+#config		{VERBOSE}  {OFF}
+#config		{WORDWRAP}  {ON}
+#pathdir	{n}  {s}  {1}
+#pathdir	{e}  {w}  {2}
+#pathdir	{s}  {n}  {4}
+#pathdir	{w}  {e}  {8}
+#pathdir	{u}  {d}  {16}
+#pathdir	{d}  {u}  {32}
+
+
+
