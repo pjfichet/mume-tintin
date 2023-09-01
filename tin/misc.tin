@@ -71,10 +71,10 @@
 };
 
 #alias {report} {
-	#nop which command to send report (showme or tell group)
+	#nop which command to send report (showme or tell group);
 	#if {"%1" == ""} {#var {report} {#showme}};
 	#else {#var {report} {%1}};
-	#nop reporting
+	#nop reporting;
 	#if {"$vitals[opponent]" == ""} {$report hp: $vitals[hp]/$vitals[maxhp], mana: $vitals[mana]/$vitals[maxmana], mp: $vitals[mp]/$vitals[maxmp].};
 	#else {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string], vs: $vitals[opponent-hits].};
 };
