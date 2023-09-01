@@ -13,14 +13,14 @@ mapdir=
 if [ "$1" = "-e" ]; then
 	# start emulation
 	(cd $mapdir
-	source venv/bin/activate
+	source .venv/bin/activate
 	mapper -i sighted -lh 127.0.0.1 -lp 4000 -f tintin -e) &
 	sleep 5
 	tintin $2
 elif [ "$1" = "-n" ]; then
 	# without sighted gui
 	(cd $mapdir
-	source venv/bin/activate
+	source .venv/bin/activate
 	mapper -lh 127.0.0.1 -lp 4000 -rh mume.org \
 	-rp 4242 -ff "{vnum}, {name}, {attribute}" -ptlf -f tintin) &
 	sleep 5
@@ -28,7 +28,7 @@ elif [ "$1" = "-n" ]; then
 else
 	# start sighted gui
 	(cd $mapdir
-	source venv/bin/activate
+	source .venv/bin/activate
 	mapper -i sighted -lh 127.0.0.1 -lp 4000 -rh mume.org \
 	-rp 4242 -ff "{vnum}, {name}, {attribute}" -ptlf -f tintin) &
 	sleep 5
