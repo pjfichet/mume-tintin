@@ -48,8 +48,15 @@
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
 	#send {\xFF\xFD\x01};
-	#send {change spam off};
-	#send {change brief on};
+	#send {change spam speech off};
+	#send {change spam description off};
+	#send {change spam fight off};
+	#send {change spam group off};
+	#send {change spam language off};
+	#send {change spam mount on};
+	#send {change spam weapon on};
+	#send {change spam detect on};
+	#send {change spam alias on};
 	#send {change compact on};
 	#send {change wordwrap off};
 	#send {info CHARNAME: %M.};
