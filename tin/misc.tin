@@ -131,6 +131,7 @@
 #alias {willow} {#showme hunting place:w 1:n 2:w 3:w 4:s 5:w 6:w 7:n 8:w dangerous:n deep:e deep:e willow.}
 
 #alias {changecolour} {
+	change autoride on
 	change colour achievement magenta;
 	change colour avoid-damage none;
 	change colour character none;
