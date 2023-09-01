@@ -5,10 +5,8 @@
 	#else {#showme Triggers but %1 != $name !};
 };
 
-#action {^%* makes a strange sound{(?: but is suddenly very silent)?}, as you place %* in {his|her|its} back.$}
-	{#delay {.2} {report}};
-#action {^Suddenly %* stabs you in the back.$}
-	{#delay {.2} {report}};
+#action {^%* makes a strange sound{(?: but is suddenly very silent)?}, as you place %* in {his|her|its} back.$} {report};
+#action {^Suddenly %* stabs you in the back.$} {report};
 
 #action {^You look up towards the skies and start calling the mighty creatures.$} {
 	#var {eagling} {false};

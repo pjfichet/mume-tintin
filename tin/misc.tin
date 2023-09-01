@@ -40,7 +40,6 @@
 	#showme {mount: $mount.};
 };
 
-#var mood {wimpy}
 #alias {mood} {
 	#if { "%0" != ""} {
 		#var {wimpy} {%0};
@@ -48,19 +47,17 @@
 		#send {change wimpy $wimpy};
 	};
 	#else {
-		#if { "$mood" == "wimpy"} {
+		#if { "$vitals[mood]" == "wimpy"} {
 			#echo {Change mood aggressive: $wimpy\.};
 			change mood aggressive;
-			#var mood {aggro};
 		};
-		#elseif { "$mood" == "aggro"} {
+		#elseif { "$vitals[mood]" == "aggressive"} {
 			#echo {Change mood wimpy: $wimpy\.};
 			change mood wimpy;
-			#var mood {wimpy};
 		};
 	};
 };
-#var {spell_speed} {normal};
+
 #alias {rec} {
 	#if {"%0" != ""} {
 		#var {reclist} {%0};
@@ -71,6 +68,15 @@
 		#foreach {$reclist} {i} {$i};
 	};
 	#else {#showme {Nothing is recorded.}};
+};
+
+#alias {report} {
+	#nop which command to send report (showme or tell group)
+	#if {"%1" == ""} {#var {report} {#showme}};
+	#else {#var {report} {%1}};
+	#nop reporting
+	#if {"$vitals[opponent]" == ""} {$report hp: $vitals[hp]/$vitals[maxhp], mana: $vitals[mana]/$vitals[maxmana], mp: $vitals[mp]/$vitals[maxmp].};
+	#else {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string], vs: $vitals[opponent-hits].};
 };
 
 #alias {rent} {

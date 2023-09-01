@@ -30,8 +30,7 @@
 };
 
 #alias lightor {
-	parse_prompt;
-	#if {"$promptlight" == "o"} {lighton};
+	#if {"$vitals[light]" == "o"} {lighton};
 };
 
 #alias togglelight {
@@ -40,7 +39,7 @@
 };
 
 #alias lightoff_sneak {
-    #if {"$sneak" == "true"} {lightoff};
+    #if {"$vitals[sneak]" != ""} {lightoff};
 };
 
 #action {^Your light has gone out.$} {#var {light} {off}}

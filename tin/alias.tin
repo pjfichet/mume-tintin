@@ -45,8 +45,8 @@
 #alias {cb} {showsend cast n 'bless' %0};
 #alias {cf} {castfood};
 #alias {cl} {showsend cast n 'cure light' %0};
-#alias {cn} {showsend change spellcasting normally; #var {spell_speed} {normal}}
-#alias {cq} {showsend change spellcasting quick; #var {spell_speed} {quick}}
+#alias {cn} {showsend change spellcasting normally};
+#alias {cq} {showsend change spellcasting quick};
 #alias {cw} {showsend cast n 'create water' %0};
 
 #alias {car} {showsend cast n 'armour'};
@@ -148,7 +148,7 @@
 
 #nop report ride rest
 #alias {r} {report};
-#alias {rg} {report tg};
+#alias {rg} {report tg}; #nop tell report to group;
 #alias {rep} {reply %0};
 
 #alias {ra} {aba};
