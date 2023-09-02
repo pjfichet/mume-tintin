@@ -47,11 +47,13 @@
 		#send {change wimpy $wimpy};
 	};
 	#else {
-		#if { "$vitals[mood]" == "wimpy"} {
+		#if { "$prompt[mood]" == "wimpy"} {
+			#var {prompt[mood]} {aggressive};
 			#echo {Change mood aggressive: $wimpy\.};
 			change mood aggressive;
 		};
-		#elseif { "$vitals[mood]" == "aggressive"} {
+		#elseif { "$prompt[mood]" == "aggressive"} {
+			#var {prompt[mood]} {wimpy};
 			#echo {Change mood wimpy: $wimpy\.};
 			change mood wimpy;
 		};
@@ -70,15 +72,6 @@
 	#else {#showme {Nothing is recorded.}};
 };
 
-#alias {report} {
-	#nop which command to send report (showme or tell group);
-	#if {"%1" == ""} {#var {report} {#showme}};
-	#else {#var {report} {%1}};
-	#nop reporting;
-	#if {"$vitals[opponent]" == ""} {$report hp: $vitals[hp]/$vitals[maxhp], mana: $vitals[mana]/$vitals[maxmana], mp: $vitals[mp]/$vitals[maxmp].};
-	#else {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string], vs: $vitals[opponent-hits].};
-};
-
 #alias {rent} {
 	#if { "%0" == "" } {
 		info;
@@ -90,6 +83,14 @@
 	#else {
 		#send {rent %0};
 	};
+};
+
+#alias {report} {
+	parse_prompt;
+	#if {"%1" == ""} {#var {report} {#showme}};
+	#else {#var {report} {%1}};
+	#if {"$prompt[opponent-hits]" == ""} {$report hp: $prompt[hp-string], mana: $prompt[mana-string], mp: $prompt[mp-string].};
+	#else {$report hp: $prompt[hp-string], mana: $prompt[mana-string], mp: $prompt[mp-string], vs: $prompt[opponent-hits].};
 };
 
 #alias {chest} {

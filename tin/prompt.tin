@@ -2,7 +2,36 @@
 
 #prompt {^PROMPT:%1>:PROMPT$} {<069>%1><099>} {-2};
 #sub {^PROMPT:%1>:PROMPT%2$} {%2};
+#action {^PROMPT:%1>:PROMPT$} {#var {prompt} {%1}};
+#alias {prompt} {#showme $prompt};
 
 #tick {myprompt} {
-	#showme {$vitals[mood] $vitals[spell-effort] light:$light $target> } {-1};
+	#showme {$prompt[mood] $prompt[spell-effort] $light $target> } {-1};
 } {0.5};
+
+#var {prompt[mood]} {wimpy};
+
+#alias {parse_prompt} {
+	#regexp {PROMPT:$prompt>:PROMPT} {PROMPT:{(?:[@*!\)o])?}{(?:[~\(\[+.%fO~UW:=<#])?}{(?:[*'"~=-]{1,2})?}{(?: [RrSsCcW]{1,4})?}{(?: HP:\w+)?}{(?: Mana:\w+)?}{(?: Move:\w+)?}{(?: Mount:\w+)?}{(?: [^:]+:\w+)?}{(?: [^:]+:\w+)?}%*>:PROMPT}
+	{
+		#var {prompt[light]} {&1};
+		#var {prompt[terrain]} {&2};
+		#var {prompt[weather]} {&3};
+		#var {prompt[sneak]} {&4};
+		#var {prompt[hp-string]} {&5};
+		#var {prompt[mana-string]} {&6};
+		#var {prompt[mp-string]} {&7};
+		#var {prompt[mount-moves]} {&8};
+		#var {prompt[opponent-hits]} {&9};
+		#var {prompt[buffer]} {&10};
+		#nop #var {promptrest} {&11};
+	}
+	{#showme {Unable to parse the prompt.}};
+	#nop sunlight:*, artificial:! moon:) dark:o;
+	#nop sneak success:S, sneak fail:s;
+	#regexp {$prompt[hp-string]} { HP:{\w+}} {#var {prompt[hp]} {&1}} {#var {prompt[hp]} {Healthy}};
+	#regexp {$prompt[opponent-hits]} { {[^:]+}:{\w+}} {#var {prompt[opponent-hits]} {&2}} {#var {prompt[opponent-hits]} {}};
+	#regexp {$prompt[mana-string]} { Mana:{\w+}} {#var {prompt[mana-string]} {&1}} {#var {prompt[mana-string]} {full}};
+	#regexp {$prompt[mp-string]} { Move:{\w+}} {#var {prompt[mp-string]} {&1}} {#var {prompt[mp-string]} {full}};
+};
+
