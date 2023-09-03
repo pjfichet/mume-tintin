@@ -6,32 +6,33 @@
 #alias {prompt} {#showme $prompt};
 
 #tick {myprompt} {
-	#showme {$prompt[mood] $prompt[spell-effort] $light $target> } {-1};
+	#showme {m:$vitals[mood] c:$vitals[spell-effort] l:$light t:$target> } {-1};
 } {0.5};
 
-#var {prompt[mood]} {wimpy};
+#var {vitals[mood]} {wimpy};
+#var {vitals[spell-effort] {normally};
 
 #alias {parse_prompt} {
 	#regexp {PROMPT:$prompt>:PROMPT} {PROMPT:{(?:[@*!\)o])?}{(?:[~\(\[+.%fO~UW:=<#])?}{(?:[*'"~=-]{1,2})?}{(?: [RrSsCcW]{1,4})?}{(?: HP:\w+)?}{(?: Mana:\w+)?}{(?: Move:\w+)?}{(?: Mount:\w+)?}{(?: [^:]+:\w+)?}{(?: [^:]+:\w+)?}%*>:PROMPT}
 	{
-		#var {prompt[light]} {&1};
-		#var {prompt[terrain]} {&2};
-		#var {prompt[weather]} {&3};
-		#var {prompt[sneak]} {&4};
-		#var {prompt[hp-string]} {&5};
-		#var {prompt[mana-string]} {&6};
-		#var {prompt[mp-string]} {&7};
-		#var {prompt[mount-moves]} {&8};
-		#var {prompt[opponent-hits]} {&9};
-		#var {prompt[buffer]} {&10};
-		#nop #var {promptrest} {&11};
+		#var {vitals[light]} {&1};
+		#var {vitals[terrain]} {&2};
+		#var {vitals[weather]} {&3};
+		#var {vitals[sneak]} {&4};
+		#var {vitals[hp-string]} {&5};
+		#var {vitals[mana-string]} {&6};
+		#var {vitals[mp-string]} {&7};
+		#var {vitals[mount-moves]} {&8};
+		#var {vitals[opponent-hits]} {&9};
+		#var {vitals[buffer]} {&10};
+		#nop #var {vitalsrest} {&11};
 	}
 	{#showme {Unable to parse the prompt.}};
 	#nop sunlight:*, artificial:! moon:) dark:o;
 	#nop sneak success:S, sneak fail:s;
-	#regexp {$prompt[hp-string]} { HP:{\w+}} {#var {prompt[hp]} {&1}} {#var {prompt[hp]} {Healthy}};
-	#regexp {$prompt[opponent-hits]} { {[^:]+}:{\w+}} {#var {prompt[opponent-hits]} {&2}} {#var {prompt[opponent-hits]} {}};
-	#regexp {$prompt[mana-string]} { Mana:{\w+}} {#var {prompt[mana-string]} {&1}} {#var {prompt[mana-string]} {full}};
-	#regexp {$prompt[mp-string]} { Move:{\w+}} {#var {prompt[mp-string]} {&1}} {#var {prompt[mp-string]} {full}};
+	#regexp {$vitals[hp-string]} { HP:{\w+}} {#var {vitals[hp-string]} {&1}} {#var {vitals[hp-string]} {Healthy}};
+	#regexp {$vitals[opponent-hits]} { {[^:]+}:{\w+}} {#var {vitals[opponent-hits]} {&2}} {#var {vitals[opponent-hits]} {}};
+	#regexp {$vitals[mana-string]} { Mana:{\w+}} {#var {vitals[mana-string]} {&1}} {#var {vitals[mana-string]} {full}};
+	#regexp {$vitals[mp-string]} { Move:{\w+}} {#var {vitals[mp-string]} {&1}} {#var {vitals[mp-string]} {full}};
 };
 

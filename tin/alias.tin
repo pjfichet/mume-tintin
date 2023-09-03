@@ -45,8 +45,8 @@
 #alias {cb} {showsend cast n 'bless' %0};
 #alias {cf} {castfood};
 #alias {cl} {showsend cast n 'cure light' %0};
-#alias {cn} {showsend change spellcasting normally};
-#alias {cq} {showsend change spellcasting quick};
+#alias {cn} {showsend change spellcasting normally; #var {vitals[spell-effort]} {normally}};
+#alias {cq} {showsend change spellcasting quick; #var {vitals[spell-effort]} {normally}};
 #alias {cw} {showsend cast n 'create water' %0};
 
 #alias {car} {showsend cast n 'armour'};

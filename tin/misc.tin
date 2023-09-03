@@ -47,13 +47,13 @@
 		#send {change wimpy $wimpy};
 	};
 	#else {
-		#if { "$prompt[mood]" == "wimpy"} {
-			#var {prompt[mood]} {aggressive};
+		#if { "$vitals[mood]" == "wimpy"} {
+			#var {vitals[mood]} {aggressive};
 			#echo {Change mood aggressive: $wimpy\.};
 			change mood aggressive;
 		};
-		#elseif { "$prompt[mood]" == "aggressive"} {
-			#var {prompt[mood]} {wimpy};
+		#elseif { "$vitals[mood]" == "aggressive"} {
+			#var {vitals[mood]} {wimpy};
 			#echo {Change mood wimpy: $wimpy\.};
 			change mood wimpy;
 		};
@@ -89,8 +89,8 @@
 	parse_prompt;
 	#if {"%1" == ""} {#var {report} {#showme}};
 	#else {#var {report} {%1}};
-	#if {"$prompt[opponent-hits]" == ""} {$report hp: $prompt[hp-string], mana: $prompt[mana-string], mp: $prompt[mp-string].};
-	#else {$report hp: $prompt[hp-string], mana: $prompt[mana-string], mp: $prompt[mp-string], vs: $prompt[opponent-hits].};
+	#if {"$vitals[opponent-hits]" == ""} {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string].};
+	#else {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string], vs: $vitals[opponent-hits].};
 };
 
 #alias {chest} {
