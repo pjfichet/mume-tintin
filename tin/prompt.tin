@@ -10,7 +10,7 @@
 } {0.5};
 
 #var {vitals[mood]} {wimpy};
-#var {vitals[spell-effort] {normally};
+#var {vitals[spell-effort]} {normally};
 
 #alias {parse_prompt} {
 	#regexp {PROMPT:$prompt>:PROMPT} {PROMPT:{(?:[@*!\)o])?}{(?:[~\(\[+.%fO~UW:=<#])?}{(?:[*'"~=-]{1,2})?}{(?: [RrSsCcW]{1,4})?}{(?: HP:\w+)?}{(?: Mana:\w+)?}{(?: Move:\w+)?}{(?: Mount:\w+)?}{(?: [^:]+:\w+)?}{(?: [^:]+:\w+)?}%*>:PROMPT}
