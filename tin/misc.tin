@@ -137,8 +137,19 @@
 
 #alias {willow} {#showme hunting place:w 1:n 2:w 3:w 4:s 5:w 6:w 7:n 8:w dangerous:n deep:e deep:e willow.}
 
-#alias {changecolour} {
+#alias {configure} {
 	change autoride on
+	change spam speech off;
+	change spam description off;
+	change spam fight off;
+	change spam group off;
+	change spam language off;
+	change spam mount on;
+	change spam weapon on;
+	change spam detect on;
+	change spam alias on;
+	change compact on;
+	change wordwrap off;
 	change colour achievement magenta;
 	change colour avoid-damage none;
 	change colour character none;
