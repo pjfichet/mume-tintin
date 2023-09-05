@@ -59,13 +59,13 @@
 	#var {dooraction} {};
 };
 
-#alias {bar} {door bar %0};
+quickref_alias {bar} {door bar %0} {bar door};
+quickref_alias {unbar} {door unbar %0} {unbar door};
 #alias {dbash} {door bash %0};
 #alias {close} {door close %0};
 #alias {knock} {door knock %0};
 #alias {block} {door block %0};
 #alias {lock} {door lock %0};
-#alias {unbar} {door unbar %0};
 #alias {open} {door open %0};
 #alias {pick} {door pick %0};
 #alias {break} {door break %0};

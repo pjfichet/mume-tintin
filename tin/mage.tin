@@ -1,28 +1,28 @@
 #nop mage spells;
-#alias {i} {castt {lightning bolt} {%0}};
+quickref_alias {i} {castt {lightning bolt} {%0}};
 #nop alias {z} {showsend cast {quake} {%0}};
 
-#nop cast
-#alias {ci} {showsend cast n 'lightning bolt' %0};
-#alias {clight} {showsend cast n 'create light' lantern};
-#alias {ce} {showsend cast 'earthquake'};
+#nop cast;
+quickref_alias {ci} {showsend cast n 'lightning bolt' %0} {cast n 'lightning bolt'};
+quickref_alias {clight} {showsend cast n 'create light' lantern} {cast n 'creat light'};
+quickref_alias {ce} {showsend cast 'earthquake'} {cast 'earthquake'};
 
-#alias {ck} {keys};
-#alias {ckl} {keyl};
-#alias {ckf} {castlife %0};
-#alias {ct} {castport %0};
-#alias {c1} {castport 1};
-#alias {c2} {castport 2};
-#alias {c3} {castport 3};
-#alias {c4} {castport 4};
-#alias {c5} {castport 5};
-#alias {c6} {castport 6};
-#alias {c7} {castport 7};
-#alias {c8} {castport 8};
-#alias {c9} {castport 9};
+quickref_alias {ck} {keys} {list teleport keys};
+quickref_alias {ckl} {keyl} {label teleport key};
+quickref_alias {ckf} {castlocatelife %0} {cast 'locate life'};
+quickref_alias {ct} {castteleport %0} {cast 'teleport' key[0]};
+quickref_alias {c1} {castteleport 1} {cast 'teleport' key[1]};
+quickref_alias {c2} {castteleport 2} {cast 'teleport' key[2]};
+quickref_alias {c3} {castteleport 3} {cast 'teleport' key[3]};
+quickref_alias {c4} {castteleport 4} {cast 'teleport' key[4]};
+quickref_alias {c5} {castteleport 5} {cast 'teleport' key[5]};
+quickref_alias {c6} {castteleport 6} {cast 'teleport' key[6]};
+quickref_alias {c7} {castteleport 7} {cast 'teleport' key[7]};
+quickref_alias {c8} {castteleport 8} {cast 'teleport' key[8]};
+quickref_alias {c9} {castteleport 9} {cast 'teleport' key[9]};
 
 
-# nop control weather
+#nop control weather
 #nop alias {wl} {weather local};
 #nop alias {wg} {weather global};
 #nop alias {wf} {weather fog};
@@ -35,11 +35,11 @@
 
 #nop locate and teleport
 #var {keylabel} {};
-#alias {castlife} {
+#alias {castlocatelife} {
 	#if {"%1" == ""} {cast 'locate life' $name};
 	#else {cast 'locate life' %1};
 }
-#alias {castport} {
+#alias {castteleport} {
 	#if {"%0" == ""} {cast 'teleport' $vkeys[1][key]};
 	#else {cast 'teleport' $vkeys[%0][key]};
 }
@@ -72,14 +72,14 @@
 };
 
 #nop clear key list
-#alias {keyc} {
+quickref_alias {keyc} {
 	#showme {List of keys cleared.};
 	#var {ikeys} {0};
 	#unvar {vkeys};
-};
+} {clear list of teleport keys};
 
 #nop delete some keys
-#alias {keyd} {
+quickref_alias {keyd} {
 	#if {"%2" != ""} {
 		#nop delete from %1 to %2;
 		#math {i} {%1};
@@ -96,4 +96,4 @@
 		#echo {Deleting key %1.};
 		#unvar {vkeys[%1]};
 	};
-};
+} {delete teleport key <from_key> [to_key]};

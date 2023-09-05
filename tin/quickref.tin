@@ -1,0 +1,14 @@
+#alias {quickref_alias} {
+	#alias {%1} {%2};
+	#format {alias} {%-12s} {%1};
+	#var {quickref[$alias]} {%3};
+};
+
+#alias {quickref} {
+	#foreach {*quickref[%*]} {i} {
+		#regexp {$i} {%1}
+			{#showme <049>$i<099>$quickref[$i]}
+			{#regexp {$quickref[$i]} {%1} {#showme <049>$i<099>$quickref[$i]}};
+	};
+};
+

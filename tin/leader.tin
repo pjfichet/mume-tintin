@@ -83,7 +83,7 @@
 }
 
 
-#alias {leader} {
+quickref_alias {leader} {
 	#if {"%0" == "none"} {
 		leader_unhighlight;
 		#var {leader} {none};
@@ -101,14 +101,16 @@
 		#if {"$leader" == "none"} {#echo Leader undefined.};
 		#else {#echo Your leader is $leader\.};
 	};
-}
-#alias {autoride} {
+} {Sets leader to none|<name>};
+
+quickref_alias {autoride} {
 	#if {("%1" == "on") || ("%1" == "off")} {#var {auto_ride} {%1}};
 	#elseif {"$auto_ride" == "off"} {#var {auto_ride} {on}};
 	#else {#var {auto_ride} {off}};
 	#echo {Auto ride $auto_ride\.}
-}
-#alias {backride} {
+} {ride after zblam};
+
+quickref_alias {backride} {
 	autoride on;
 	#if {("%1" == "on") || ("%1" == "off")} {#var {auto_backride} {%1}};
 	#elseif {"$auto_backride" == "off"} {
@@ -121,13 +123,14 @@
 		#echo {Backride off. Dismount};
 		#send dismount;
 	};
-}
-#alias {autogroup} {
+} {ride behind $leader};
+
+quickref_alias {autogroup} {
 	#if {("%1" == "on") || ("%1" == "off")} {#var {auto_group} {%1}};
-	#elseif {"$auto_group" == "off"} {#var {auto_group} {on}};
+	#elseif {quickref_auto_group" == "off"} {#var {auto_group} {on}};
 	#else {#var {auto_group} {off}};
-	#echo {Auto group $auto_group\.}
-}
+	#echo {Auto group $auto_group\.};
+} {group people raising hand};
 
 #var {auto_group} {off}
 #var {auto_ride} {off}

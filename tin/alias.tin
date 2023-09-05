@@ -1,277 +1,279 @@
 #nop common aliases
 
 #nop directions
-#alias {h} {showsend w};
-#alias {j} {showsend s};
-#alias {k} {showsend n};
-#alias {l} {showsend e};
-#alias {u} {showsend u};
-#alias {n} {showsend d};
+quickref_alias {h} {showsend w} {west};
+quickref_alias {j} {showsend s} {south};
+quickref_alias {k} {showsend n} {north};
+quickref_alias {l} {showsend e} {east};
+quickref_alias {u} {showsend u} {up};
+quickref_alias {n} {showsend d} {down};
 
-#alias {eh} {showsend escape w};
-#alias {ej} {showsend escape s};
-#alias {ek} {showsend escape n};
-#alias {el} {showsend escape e};
-#alias {eu} {showsend escape u};
-#alias {en} {showsend escape d};
+quickref_alias {eh} {showsend escape w} {escape west};
+quickref_alias {ej} {showsend escape s} {escape south};
+quickref_alias {ek} {showsend escape n} {escape north};
+quickref_alias {el} {showsend escape e} {escape east};
+quickref_alias {eu} {showsend escape u} {escape up};
+quickref_alias {en} {showsend escape d} {escape down};
 
 #nop quick
-#alias {a} {showsend assist}
-#alias {f} {#cr; showsend flee};
-#alias {m} {mood %0};
-#alias {q} {kill %0};
-#alias {,} {pursue};
-#alias {z} {stab %0};
+quickref_alias {a} {showsend assist} {assist};
+quickref_alias {f} {#cr; showsend flee} {flee};
+quickref_alias {m} {mood %0} {toggle mood; change wimpy %1};
+quickref_alias {q} {kill %0} {kill %1};
+quickref_alias {,} {pursue} {pursue};
+quickref_alias {z} {stab %0} {stab %0};
 
 #nop alertness
-#alias {ap} {showsend change alertness paranoid};
-#alias {an} {showsend change alertness normal};
+quickref_alias {ap} {showsend change alertness paranoid} {change alertness paranoid};
+quickref_alias {an} {showsend change alertness normal} {change alertness normal};
 
 #nop bash
-#alias {b} {showsend bash};
-#alias {ba} {va; bv};
-#alias {bd} {bash dis};
-#alias {bi} {vi; bv};
-#alias {bm} {vm; bv};
-#alias {bo} {vo; bv};
-#alias {bp} {vp; bv};
-#alias {br} {vr; bv};
-#alias {bt} {vt; bv};
-#alias {bv} {showsend bash $target};
-#alias {bw} {vw; bv};
-#alias {bz} {vz; bv};
+quickref_alias {b} {showsend bash} {bash};
+quickref_alias {ba} {va; showsend bash $target} {bash target};
+quickref_alias {bd} {bash dis} {bash dis};
+quickref_alias {bi} {vi; showsend bash $target} {increase target number, bash target};
+quickref_alias {bm} {vm; showsend bash $target} {target and bash man*t};
+quickref_alias {bo} {vo; showsend bash $target} {target and bash orc*};
+quickref_alias {bp} {vp; showsend bash $target} {target and bash plant};
+quickref_alias {br} {vr; showsend bash $target} {reset target number, bash target};
+quickref_alias {bt} {vt; showsend bash $target} {target and bash troll*};
+quickref_alias {bv} {showsend bash $target} {bash target};
+quickref_alias {bw} {vw; showsend bash $target} {target and bash woman*};
+quickref_alias {bz} {vz; showsend bash $target} {target and bash zaugurz*};
 
 #nop cast
-#alias {cb} {showsend cast n 'bless' %0};
-#alias {cf} {castfood};
-#alias {cl} {showsend cast n 'cure light' %0};
-#alias {cn} {showsend change spellcasting normally; #var {vitals[spell-effort]} {normally}};
-#alias {cq} {showsend change spellcasting quick; #var {vitals[spell-effort]} {normally}};
-#alias {cw} {showsend cast n 'create water' %0};
+quickref_alias {cb} {showsend cast n 'bless' %0} {cast n 'bless'};
+quickref_alias {cf} {castfood} {cast 'create food', eat mushroom};
+quickref_alias {cl} {showsend cast n 'cure light' %0} {cast n 'cure light'};
+quickref_alias {cn} {showsend change spellcasting normally; #var {vitals[spell-effort]} {normally}} {change spellcasting normally};
+quickref_alias {cq} {showsend change spellcasting quick; #var {vitals[spell-effort]} {normally}} {change spellcasting quick};
+quickref_alias {cw} {showsend cast n 'create water' %0} {cast n 'create water};
 
-#alias {car} {showsend cast n 'armour'};
-#alias {ccd} {showsend cast n 'cure disease' %0};
-#alias {ccb} {showsend cast n 'cure blindness' %0};
-#alias {cde} {showsend cast n 'detect evil'};
-#alias {cld} {showsend cast n 'shield'};
-#alias {cpe} {showsend cast n 'protection from evil'};
-#alias {crp} {showsend cast n 'remove poison' %0};
-#alias {csh} {showsend cast n 'shroud'};
-#alias {csl} {showsend cast n 'sense life'};
+quickref_alias {car} {showsend cast n 'armour'} {cast n 'armour'};
+quickref_alias {ccd} {showsend cast n 'cure disease' %0} {cast n 'cure disease'};
+quickref_alias {ccb} {showsend cast n 'cure blindness' %0} {cast n 'cure blindness'};
+quickref_alias {cde} {showsend cast n 'detect evil'} {cast n 'detect evil'};
+quickref_alias {cld} {showsend cast n 'shield'} {cast n 'shield'};
+quickref_alias {cpe} {showsend cast n 'protection from evil'} {cast n 'protection from evil'};
+quickref_alias {crp} {showsend cast n 'remove poison' %0} {cast n 'remove poison'};
+quickref_alias {csh} {showsend cast n 'shroud'} {cast n 'shroud'};
+quickref_alias {csl} {showsend cast n 'sense life'} {cast n 'sense life};
 
 
 
 #nop door
-#alias {o} {door open %0};
-#alias {c} {door close %0};
-#alias {d} {door %0};
-#alias {da} {door a};
-#alias {dc} {door close %0};
-#alias {dn} {door knock %0};
-#alias {dk} {door block %0};
-#alias {dl} {door lock %0};
-#alias {do} {door open %0};
-#alias {dp} {door pick %0};
-#alias {dr} {door break %0};
-#alias {du} {door unlock %0};
+quickref_alias {o} {door open %0} {open door [a|<dir>|<door_name>]]};
+quickref_alias {c} {door close %0} {close door};
+quickref_alias {d} {door %0} {set door};
+quickref_alias {da} {door a} {set door to last seen door};
+quickref_alias {dc} {door close %0} {close door};
+quickref_alias {dn} {door knock %0} {knock door};
+quickref_alias {dk} {door block %0} {block door};
+quickref_alias {dl} {door lock %0} {lock door};
+quickref_alias {do} {door open %0} {open door};
+quickref_alias {dp} {door pick %0} {pick door};
+quickref_alias {dr} {door break %0} {break door};
+quickref_alias {du} {door unlock %0} {unlock door};
 
 #nop drink
-#alias {dw} {drink water; pour water $flask};
-#alias {df} {drink $flask};
+quickref_alias {dw} {drink water; pour water $flask} {drink water, pour water $flask};
+quickref_alias {df} {drink $flask} {drink $flask};
 
 #nop get
-#alias {gap} {showsend get plant};
-#alias {ga} {showsend get all};
-#alias {gac} {showsend get all corpse};
-#alias {gag} {showsend get all.coins all.corpse};
-#alias {gam} {gag; showsend get all.metal all.corpse; showsend get all.sword all.corpse}
-#alias {gal} {lightor; showsend look in corpse; lightoff_sneak};
-#alias {gah} {showsend give all h};
+quickref_alias {gap} {showsend get plant} {get plant};
+quickref_alias {ga} {showsend get all} {get all};
+quickref_alias {gac} {showsend get all corpse} {get all corpse};
+quickref_alias {gag} {showsend get all.coins all.corpse} {get all.coins all.corpse};
+quickref_alias {gam} {gag; showsend get all.metal all.corpse; showsend get all.sword all.corpse} {get sword and metal from corpse}
+quickref_alias {gal} {lightor; showsend look in corpse; lightoff_sneak} {look in corpse};
+quickref_alias {gah} {showsend give all h} {give all h};
 
 #nop info
-#alias {affect} {info %f};
-#alias {age} {info Age: %a years, %N months and %n days.};
-#alias {weight} {info Carrying %C. %F};
-#alias {carry} {weight};
-#alias {align} {info %q};
-#alias {citizen} {info Citizen in %c.};
-#alias {level} {info Level: %l.};
-#alias {gold} {info %r};
-#alias {fame} {info War fame: %K.};
+quickref_alias {affect} {info %f} {info affects};
+quickref_alias {age} {info Age: %a years, %N months and %n days.} {info age};
+quickref_alias {weight} {info Carrying %C. %F} {info carrying};
+quickref_alias {carry} {weight} {info carrying};
+quickref_alias {align} {info %q} {info alignment};
+quickref_alias {citizen} {info Citizen in %c.} {info citizenship};
+quickref_alias {level} {info Level: %l.} {info level};
+quickref_alias {gold} {info %r} {info gold};
+quickref_alias {fame} {info War fame: %K.} {info fame};
 
 #nop leader
-#alias {lcb} {showsend cast n 'bless' $leader};
-#alias {lcl} {showsend cast n 'cure light' $leader};
-#alias {lf} {showsend follow %1};
-#alias {ln} {leader none};
-#alias {lp} {#echo {protect $leader}; #send {protect $leader}};
-#alias {lr} {#echo {rescue $leader}; #send {rescue $leader}};
-#alias {ls} {showsend follow self};
-#alias {lt} {tell $leader %0};
-#alias {lw} {showsend wake $leader};
-#alias {lx} {lightor; showsend examine $leader; lightoff_sneak};
+quickref_alias {lcb} {showsend cast n 'bless' $leader} {bless leader};
+quickref_alias {lcl} {showsend cast n 'cure light' $leader} {cure light leader};
+quickref_alias {lf} {showsend follow %1} {follow %1};
+quickref_alias {ln} {leader none} {leader none};
+quickref_alias {lp} {#echo {protect $leader}; #send {protect $leader}} {protect leader};
+quickref_alias {lr} {#echo {rescue $leader}; #send {rescue $leader}} {rescue leader};
+quickref_alias {ls} {showsend follow self} {follow self};
+quickref_alias {lt} {tell $leader %0} {tell leader <message>};
+quickref_alias {lw} {showsend wake $leader} {wake leader};
+quickref_alias {lx} {lightor; showsend examine $leader; lightoff_sneak} {examine leader};
 
 #nop look around
-#alias {la} {showsend look around};
+quickref_alias {la} {showsend look around} {look around};
 
 #nop hide
-#alias {hq} {lightor; hide quick};
-#alias {ht} {lightor; hide thorough};
+quickref_alias {hq} {lightor; hide quick} {hide quick};
+quickref_alias {ht} {lightor; hide thorough} {hide thorough};
 
 #nop look
-#alias {ll} {lightor; look; exit; lightoff_sneak};
+quickref_alias {ll} {lightor; look; exit; lightoff_sneak} {look, exit};
 
 #nop order charmies and mercs
-#alias {oa} {ask $follower assist};
-#alias {ob} {showsend bandage $follower};
-#alias {ocb} {showsend cast 'bless' $follower};
-#alias {ocl} {showsend cast 'cure light' $follower};
-#alias {oh} {ask $follower health};
-#alias {om} {ask $follower moves};
-#alias {or} {ask $follower ride %1};
-#alias {ot} {ask $follower time};
-#alias {ox} {showsend examine $follower};
+quickref_alias {oa} {ask $follower assist} {ask follower assist};
+quickref_alias {ob} {showsend bandage $follower} {bandage follower};
+quickref_alias {ocb} {showsend cast 'bless' $follower} {bless follower};
+quickref_alias {ocl} {showsend cast 'cure light' $follower} {cure light follower};
+quickref_alias {oh} {ask $follower health} {ask follower health};
+quickref_alias {om} {ask $follower moves} {ask follow moves};
+quickref_alias {or} {ask $follower ride %1} {ask follower ride <mount>};
+quickref_alias {ot} {ask $follower time} {ask follower time};
+quickref_alias {ox} {showsend examine $follower} {examine follower};
 
 #nop path and go
-#alias {p} {pathstep};
-#alias {pd} {pathdeathshow};
-#alias {pf} {rlabel search %1};
-#alias {pg} {pathstep};
-#alias {pk} {pathmark};
-#alias {pm} {pathmarkshow};
-#alias {pp} {pathshow %0};
-#alias {pr} {pathrun %0};
-#alias {ps} {stop};
+quickref_alias {p} {pathstep} {step on the path};
+quickref_alias {pd} {pathdeathshow} {show path to death mark};
+quickref_alias {pf} {rlabel search %1} {search <room label>};
+quickref_alias {pg} {pathstep} {step on the path};
+quickref_alias {pk} {pathmark} {mark room};
+quickref_alias {pm} {pathmarkshow} {show path to mark};
+quickref_alias {pp} {pathshow %0} {set path to <room label>, show the path};
+quickref_alias {pr} {pathrun %0} {run to [room label]};
+quickref_alias {ps} {stop} {stop running on path};
 
 #nop send q
-#alias {qq} {#send q};
+quickref_alias {qq} {#send q} {send q};
+
+quickref_alias {qr} {quickref %0} {quickref <keyword>};
 
 #nop report ride rest
-#alias {r} {report};
-#alias {rg} {report tg}; #nop tell report to group;
-#alias {rep} {reply %0};
+quickref_alias {r} {report} {report vitals to self};
+quickref_alias {rg} {report tg} {report vitals to group}; #nop tell report to group;
+quickref_alias {rep} {reply %0} {reply <message>};
 
-#alias {ra} {aba};
-#alias {ri} {showsend ride %0};
-#alias {rl} {lead %0};
-#alias {rz} {stand; lead %0; ride};
+quickref_alias {ra} {aba} {aba};
+quickref_alias {ri} {showsend ride %0} {ride [<mount>]};
+quickref_alias {rl} {lead %0} {lead [<mount>]};
+quickref_alias {rz} {stand; lead %0; ride} {stand, lead, ride};
 
-#alias {rb} {showsend bandage %0};
-#alias {bc} {showsend butcher corpse};
-#alias {re} {showsend rest};
-#alias {rs} {showsend sleep};
-#alias {ws} {#showme {wake\; stand}; wake; stand};
-#alias {ru} {showsend burn corpse};
-#alias {ry} {togglelight};
+quickref_alias {rb} {showsend bandage %0} {bandage [<target>]};
+quickref_alias {bc} {showsend butcher corpse} {butcher corpse};
+quickref_alias {re} {showsend rest} {rest};
+quickref_alias {rs} {showsend sleep} {sleep};
+quickref_alias {ws} {#showme {wake\; stand}; wake; stand} {wake, stand};
+quickref_alias {ru} {showsend burn corpse} {burn corpse};
+quickref_alias {ry} {togglelight} {toggle light};
 
-#alias {rq} {showsend reveal quick};
-#alias {rt} {showsend reveal thorough};
-#alias {fq} {showsend flush quick};
-#alias {ft} {showsend flush thorough};
+quickref_alias {fq} {showsend flush quick} {flush quick};
+quickref_alias {ft} {showsend flush thorough} {flush thorough};
+quickref_alias {rq} {showsend reveal quick} {reveal quick};
+quickref_alias {rt} {showsend reveal thorough} {reveal thorough};
+quickref_alias {rd} {showsend reveal dagger} {reveal dagger};
+quickref_alias {rg} {showsend reveal ginseng} {reveal ginseng};
 
 #nop score search scout sneak
-#alias {sd} {showsend reveal dagger};
-#alias {sg} {showsend reveal ginseng};
-#alias {sh} {showsend scout w};
-#alias {sj} {showsend scout s};
-#alias {sk} {showsend scout n};
-#alias {sl} {showsend scout e};
-#alias {sn} {showsend scout d};
-#alias {sri} {showsend seek rivendell};
-#alias {ss} {showsend sneak; lightoff};
-#alias {su} {showsend scout u};
+quickref_alias {sh} {showsend scout w} {scout west};
+quickref_alias {sj} {showsend scout s} {scout south};
+quickref_alias {sk} {showsend scout n} {scout north};
+quickref_alias {sl} {showsend scout e} {scout east};
+quickref_alias {sn} {showsend scout d} {scout down};
+quickref_alias {su} {showsend scout u} {scout up};
+quickref_alias {sr} {showsend seek rivendell} {seek rivendell};
+quickref_alias {ss} {showsend sneak; lightoff} {sneak};
 
 #nop shoot
-#alias {s} {weapon bow; showsend shoot $target};
-#alias {so} {showsend shoot};
-#alias {sr} {recover};
-#alias {sa} {get all.arrow; get all.arrow all.corpse; put all.arrow quiver};
+quickref_alias {s} {weapon bow; showsend shoot $target} {shoot target};
+quickref_alias {so} {showsend shoot} {shoot};
+quickref_alias {sa} {lighton; recover; lightoff_sneak} {recover arrows};
+quickref_alias {sal} {lighton; get all.arrow; get all.arrow all.corpse; put all.arrow quiver; lightoff_sneak} {get all.arrow all.corpse};
 
 
-#alias {ssh} {lightor; showsend search w};
-#alias {ssj} {lightor; showsend search s};
-#alias {ssk} {lightor; showsend search n};
-#alias {ssl} {lightor; showsend search e};
-#alias {ssu} {lightor; showsend search u};
-#alias {ssn} {lightor; showsend search d};
+quickref_alias {ssh} {lightor; showsend search w} {search west};
+quickref_alias {ssj} {lightor; showsend search s} {search south};
+quickref_alias {ssk} {lightor; showsend search n} {search north};
+quickref_alias {ssl} {lightor; showsend search e} {search east};
+quickref_alias {ssu} {lightor; showsend search u} {search up};
+quickref_alias {ssn} {lightor; showsend search d} {search down};
 
 #nop tell
-#alias {tg} {tell group %0};
-#alias {te} {tell %0};
+quickref_alias {tg} {tell group %0} {tell group <message>};
+quickref_alias {te} {tell %0} {tell <someone> <message>};
 
 #nop track
-#alias {tm} {lightor; showsend track man*};
-#alias {to} {lightor; showsend track orc*};
-#alias {tr} {lightor; showsend track};
-#alias {tt} {lightor; showsend track troll*};
-#alias {tk} {lightor; #if {"%1" != ""} {target %1}; showsend track $target};
-#alias {tw} {lightor; showsend track woman*};
-#alias {tz} {lightor; showsend track zaugurz*};
-#alias {tmo} {lightor; #if {"%1" != ""} {mount %1}; showsend track $mount};
+quickref_alias {tm} {lightor; showsend track man*} {track man*};
+quickref_alias {to} {lightor; showsend track orc*} {track orc*};
+quickref_alias {tr} {lightor; showsend track} {track};
+quickref_alias {tt} {lightor; showsend track troll*} {track troll*};
+quickref_alias {tk} {lightor; #if {"%1" != ""} {target %1}; showsend track $target} {track target};
+quickref_alias {tw} {lightor; showsend track woman*} {track woman*};
+quickref_alias {tz} {lightor; showsend track zaugurz*} {track zaugurz*};
+quickref_alias {tmo} {lightor; #if {"%1" != ""} {mount %1}; showsend track $mount} {track mount};
 
 #nop target
-#alias {va} {target 1 animal};
-#alias {vd} {target 1 dunlending};
-#alias {vi} {itarget};
-#alias {vj} {target %1};
-#alias {vl} {labelize %1};
-#alias {vm} {target 1 man*};
-#alias {vo} {target 1 orc*};
-#alias {vp} {target 1 plant};
-#alias {vr} {rtarget};
-#alias {vt} {target 1 troll*};
-#alias {vw} {target 1 woman*};
-#alias {vx} {exam};
-#alias {vz} {target 1 zaugurz*};
-#alias {vvm} {target 1 man};
-#alias {vvo} {target 1 orc};
-#alias {vvt} {target 1 troll};
+quickref_alias {va} {target 1 animal} {target 1.animal};
+quickref_alias {vd} {target 1 dunlending} {target 1.dunlending};
+quickref_alias {vi} {itarget} {increase target number};
+quickref_alias {vj} {target %1} {target 1.<target>};
+quickref_alias {vl} {labelize %1} {label};
+quickref_alias {vm} {target 1 man*} {target 1.man*};
+quickref_alias {vo} {target 1 orc*} {target 1.orc*};
+quickref_alias {vp} {target 1 plant} {target 1.plant*};
+quickref_alias {vr} {rtarget} {reset target number (to 1)};
+quickref_alias {vt} {target 1 troll*} {target 1.troll*};
+quickref_alias {vw} {target 1 woman*} {target 1.woman*};
+quickref_alias {vx} {exam} {exam};
+quickref_alias {vz} {target 1 zaugurz*} {target 1.zaugurz*};
+quickref_alias {vvm} {target 1 man} {target 1.man};
+quickref_alias {vvo} {target 1 orc} {target 1.orc};
+quickref_alias {vvt} {target 1 troll} {target 1.troll};
 
-#nop label
-#alias {vka} {target 1 ka};
-#alias {vkb} {target 1 kb};
-#alias {vkc} {target 1 kc};
-#alias {vkd} {target 1 kd};
-#alias {vke} {target 1 ke};
-#alias {vkf} {target 1 kf};
-#alias {vkg} {target 1 kg};
-#alias {vkh} {target 1 kh};
-#alias {vki} {target 1 ki};
+#nop target label
+quickref_alias {vka} {target 1 ka} {target ka};
+quickref_alias {vkb} {target 1 kb} {target kb};
+quickref_alias {vkc} {target 1 kc} {target kc};
+quickref_alias {vkd} {target 1 kd} {target kd};
+quickref_alias {vke} {target 1 ke} {target ke};
+quickref_alias {vkf} {target 1 kf} {target kf};
+quickref_alias {vkg} {target 1 kg} {target kg};
+quickref_alias {vkh} {target 1 kh} {target kh};
+quickref_alias {vki} {target 1 ki} {target ki};
 
 
 
-#alias {wm} {lightor; showsend where man*};
-#alias {wo} {lightor; showsend where orc*};
-#alias {wt} {lightor; showsend where troll*};
-#alias {wk} {lightor; #if {"%1" != ""} {target %1}; showsend where $target};
-#alias {ww} {lightor; showsend where woman*};
-#alias {wz} {lightor; showsend where zaugurz*};
-#alias {wmo} {lightor; #if {"%1" != ""} {mount %1}; showsend where $mount};
+quickref_alias {wm} {lightor; showsend where man*} {where man*};
+quickref_alias {wo} {lightor; showsend where orc*} {where orc*};
+quickref_alias {wt} {lightor; showsend where troll*} {where troll*};
+quickref_alias {wk} {lightor; #if {"%1" != ""} {target %1}; showsend where $target} {where target};
+quickref_alias {ww} {lightor; showsend where woman*} {where woman*};
+quickref_alias {wz} {lightor; showsend where zaugurz*} {where zaugurz*};
+quickref_alias {wmo} {lightor; #if {"%1" != ""} {mount %1}; showsend where $mount} {where mount};
 
 
 #nop use tools
-#alias {azu} {scroll azure};
-#alias {bla} {scroll black};
-#alias {blu} {scroll blue};
-#alias {ebo} {scroll ebony};
-#alias {pur} {scroll purple};
-#alias {vel} {scroll vellum};
+quickref_alias {azu} {scroll azure} {get and recite azure scroll};
+quickref_alias {bla} {scroll black} {get and recite black scroll};
+quickref_alias {blu} {scroll blue} {get and recite blue scroll};
+quickref_alias {ebo} {scroll ebony} {get and recite ebony scroll};
+quickref_alias {pur} {scroll purple} {get and recite purple scroll};
+quickref_alias {vel} {scroll vellum} {get and recite vellum scroll};
 
 
-#alias {ring} {use ring;}
-#alias {candle} {rem $weapon; get candle all; hold candle; use candle; wield $weapon};
-#alias {mir} {get miruvor $bag; drink miruvor};
-#alias {pbs} {use stone};
-#alias {nimble} {weapon nimble};
-#alias {elven} {weapon elven};
-#alias {slender} {weapon slender};
-#alias {dirk} {weapon dirk};
-#alias {thorn} {weapon thorn};
-#alias {runed} {weapon runed};
-#alias {sword} {weapon sword};
-#alias {bow} {weapon bow};
-#alias {smoke} {get pipe $bag; rem $weapon; hold pipe; sit; smoke pipe; stand; rem pipe; whield $weapon; put pipe $container;}
-#alias {lembas} {get lembas all; eat lembas};
+quickref_alias {ring} {use ring} {use ring};
+quickref_alias {candle} {rem $weapon; get candle all; hold candle; use candle; wield $weapon} {use black candle};
+quickref_alias {mir} {get miruvor $bag; drink miruvor} {get and drink miruvor};
+quickref_alias {pbs} {use stone} {use pale blue stone};
+quickref_alias {nimble} {weapon nimble} {wield nimble blade};
+quickref_alias {elven} {weapon elven} {wield elven dagger};
+quickref_alias {slender} {weapon slender} {wield slender dagger};
+quickref_alias {dirk} {weapon dirk} {wield dirk};
+quickref_alias {thorn} {weapon thorn} {wield thorn};
+quickref_alias {runed} {weapon runed} {wield black runed dagger};
+quickref_alias {sword} {weapon sword} {wield sword};
+quickref_alias {bow} {weapon bow} {wield bow};
+quickref_alias {smoke} {get pipe $bag; rem $weapon; hold pipe; sit; smoke pipe; stand; rem pipe; whield $weapon; put pipe $container;} {get and smoke pipe};
+quickref_alias {lembas} {get lembas all; eat lembas} {get and eat lembas};
 
 #nop yes
-#alias {yes} {showsend say yes};
+quickref_alias {yes} {showsend say yes} {say yes};

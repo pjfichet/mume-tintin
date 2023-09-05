@@ -11,6 +11,7 @@
 #read $src/sub_color.tin
 
 #nop Scripts
+#read $src/quickref.tin
 #read $src/log.tin
 #read $src/misc.tin
 #read $src/target.tin

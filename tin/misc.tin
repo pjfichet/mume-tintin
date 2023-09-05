@@ -7,40 +7,42 @@
 }
 #alias {src} {#read $src/%1.tin};
 
-#alias {sellall} {
+quickref_alias {sellall} {
 	#var {selllist} {%0};
 	#replace {selllist} { } {;};
 	#foreach {$selllist} {i} {sell all.$i};
-}
+} {sell all.arguments};
 
 #alias {mount} {
 	#var {mount} {%1};
 	#showme {mount: $mount.};
 }
 
-#alias {flask} {
+quickref_alias {flask} {
 	#var {flask} {%1};
 	#showme {flask: $flask.};
-}
+} {set water container.};
 
-#alias bag {
+quickref_alias bag {
 	#var {bag} {%1};
 	#showme {bag: $bag.};
-};
-#alias {weapon} {
+} {set container.};
+
+quickref_alias {weapon} {
 	#if {"$weapon" != "%1"} {
 		get %1 $bag;
 		draw %1;
 		put $weapon $bag;
 		#var {weapon} {%1};
 	};
-};
-#alias mount {
+} {draw %1 from $bag; set default weapon};
+
+quickref_alias mount {
 	#var {mount} {%1};
 	#showme {mount: $mount.};
-};
+} {set mount};
 
-#alias {mood} {
+quickref_alias {mood} {
 	#if { "%0" != ""} {
 		#var {wimpy} {%0};
 		#nop echo {Change wimpy $wimpy\.};
@@ -58,9 +60,9 @@
 			change mood wimpy;
 		};
 	};
-};
+} {toggle mood, set wimpy %1};
 
-#alias {rec} {
+quickref_alias {rec} {
 	#if {"%0" != ""} {
 		#var {reclist} {%0};
 		#replace {reclist} { } {;};
@@ -70,7 +72,7 @@
 		#foreach {$reclist} {i} {$i};
 	};
 	#else {#showme {Nothing is recorded.}};
-};
+} {record a list of actions or execute recorded list.};
 
 #alias {rent} {
 	#if { "%0" == "" } {
@@ -93,7 +95,7 @@
 	#else {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string], vs: $vitals[opponent-hits].};
 };
 
-#alias {chest} {
+quickref_alias {chest} {
 	#if {"%0" != ""} {
 		#showme {<109>open chest\; look in chest\; get %1 chest<099>};
 		#send {open chest};
@@ -105,7 +107,7 @@
 		#send {open chest};
 		#send {look in chest};
 	};
-};
+} {look in chest or get %1 from chest.};
 
 #alias {castfood} {
 	#action {^{A magic mushroom|Something} suddenly appears.$} {
@@ -115,29 +117,32 @@
 	showsend cast 'create food';
 }
 
-#alias {scroll} {
+quickref_alias {scroll} {
 	showsend get %1 all;
 	showsend recite %1 %2;
-};
-#alias {eemote} {
+} {get %1 all; recite %1 %2};
+
+quickref_alias {eemote} {
 	#var {emote} {%0};
 	#showme {<069>$name $emote<099>};
 	#send {emote $emote};
-};
+} {emote %0};
 
 
-#alias burnweb {
+quickref_alias burnweb {
 	rem $weapon;
 	rem lantern;
 	pour lantern web;
 	burn web;
 	wear lantern belt;
 	wield $weapon;
-};
+} {use lantern to burn web.};
 
-#alias {willow} {#showme hunting place:w 1:n 2:w 3:w 4:s 5:w 6:w 7:n 8:w dangerous:n deep:e deep:e willow.}
+quickref_alias {willow} {
+	#showme hunting place:w 1:n 2:w 3:w 4:s 5:w 6:w 7:n 8:w dangerous:n deep:e deep:e willow.
+} {path to willow from hunting place};
 
-#alias {configure} {
+quickref_alias {configure} {
 	change autoride on
 	change spam speech off;
 	change spam description off;
@@ -184,6 +189,5 @@
 	change colour zone-good green;
 	change colour zone-neutral white;
 	change colour zone-nice cyan;
-};
-
+} {change spam and colour.};
 
