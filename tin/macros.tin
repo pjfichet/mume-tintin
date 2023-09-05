@@ -33,7 +33,7 @@
 #macro {\ei} {i}
 #macro {\ey} {y}
 #macro {\er} {r}
-
+#macro {\es} {s}
 
 
 #nop door
