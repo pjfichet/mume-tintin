@@ -184,7 +184,7 @@ quickref_alias {sr} {showsend seek rivendell} {seek rivendell};
 quickref_alias {ss} {showsend sneak; lightoff} {sneak};
 
 #nop shoot
-quickref_alias {s} {weapon bow; showsend shoot $target} {shoot target};
+quickref_alias {s} {shoottarget} {shoot target};
 quickref_alias {so} {showsend shoot} {shoot};
 quickref_alias {sa} {lighton; recover; lightoff_sneak} {recover arrows};
 quickref_alias {sal} {lighton; get all.arrow; get all.arrow all.corpse; put all.arrow quiver; lightoff_sneak} {get all.arrow all.corpse};

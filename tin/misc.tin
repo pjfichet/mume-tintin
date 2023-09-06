@@ -37,6 +37,20 @@ quickref_alias {weapon} {
 	};
 } {draw %1 from $bag; set default weapon};
 
+quickref_alias {piercing} {
+	#if { "%1" != ""} {
+		#var {piercing} {%1};
+	};
+	#showme {piercing: $piercing.};
+} {set piercing weapon};
+
+quickref_alias {shooting} {
+	#if { "%1" != ""} {
+		#var {shooting} {%1};
+	}
+	#showme {shooting: $shooting.};
+} {set shooting weapon};
+
 quickref_alias mount {
 	#var {mount} {%1};
 	#showme {mount: $mount.};

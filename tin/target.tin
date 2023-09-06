@@ -44,8 +44,15 @@
 };
 #alias {stab} {
 	#nop backstab the target;
+	#if { "$weapon" != "$piercing"} {weapon $piercing};
 	#if { "%0" != ""} {target %0};
 	showsend backstab $target;
+};
+#alias {shoottarget} {
+	#nop shoot the target;
+	#if { "$weapon" != "$shooting"} {weapon $shooting};
+	#if {"%0" != ""} {target %0};
+	showsend shoot $target;
 };
 #alias {casttarget} {
 	#if {"%2" != ""} {target %2};
