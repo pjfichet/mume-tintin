@@ -17,8 +17,8 @@
 	#var {needed_xp} {%3};
 	#var {needed_tp} {%4};
 	#if {"%5" == "xp"} {
-		#echo {Gained tp: $gained_tp, needed tp: $needed_tp, session tp: $session_tp.};
-		#echo {gained xp: $gained_xp, needed xp: $needed_xp, session xp: $session_xp.};
+		#echo {Gained tp: $gained_tp, session tp: $session_tp, needed tp: $needed_tp.};
+		#echo {Gained xp: $gained_xp, session xp: $session_xp, needed xp: $needed_xp.};
 	};
 	#else {#echo {Needed tp: $needed_tp, needed xp: $needed_xp.}};
 	#line gag;
