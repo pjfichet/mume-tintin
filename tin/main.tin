@@ -22,6 +22,7 @@
 #read $src/xp.tin
 #read $src/path.tin
 #read $src/prompt.tin
+#read $src/gmcp.tin
 #read $src/alias.tin
 #read $src/action.tin
 #read $src/macros.tin

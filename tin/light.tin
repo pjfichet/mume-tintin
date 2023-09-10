@@ -30,7 +30,7 @@ quickref_alias {lightsource} {
 };
 
 #alias lightor {
-	parse_prompt;
+	#nop parse_prompt;
 	#if {"$vitals[light]" == "o"} {lighton};
 };
 
@@ -40,7 +40,7 @@ quickref_alias {lightsource} {
 };
 
 #alias lightoff_sneak {
-	parse_prompt;
+	#nop parse_prompt;
     #if {"$vitals[sneak]" != ""} {lightoff};
 };
 

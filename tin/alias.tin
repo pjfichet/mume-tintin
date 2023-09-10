@@ -45,8 +45,10 @@ quickref_alias {bz} {vz; showsend bash $target} {target and bash zaugurz*};
 quickref_alias {cb} {showsend cast n 'bless' %0} {cast n 'bless'};
 quickref_alias {cf} {castfood} {cast 'create food', eat mushroom};
 quickref_alias {cl} {showsend cast n 'cure light' %0} {cast n 'cure light'};
-quickref_alias {cn} {showsend change spellcasting normally; #var {vitals[spell-effort]} {normally}} {change spellcasting normally};
-quickref_alias {cq} {showsend change spellcasting quick; #var {vitals[spell-effort]} {normally}} {change spellcasting quick};
+#nop quickref_alias {cn} {showsend change spellcasting normally; #var {vitals[spell-effort]} {normally}} {change spellcasting normally};
+#nop quickref_alias {cq} {showsend change spellcasting quick; #var {vitals[spell-effort]} {normally}} {change spellcasting quick};
+nop quickref_alias {cn} {showsend change spellcasting normally} {change spellcasting normally};
+nop quickref_alias {cq} {showsend change spellcasting quick} {change spellcasting quick};
 quickref_alias {cw} {showsend cast n 'create water' %0} {cast n 'create water};
 
 quickref_alias {car} {showsend cast n 'armour'} {cast n 'armour'};

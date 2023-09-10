@@ -20,7 +20,10 @@
 
 #EVENT {IAC SB GMCP Char.Vitals IAC SE}
 {
-     #var vitals {%0};
+	#var gmcp {%0};
+	#foreach {*gmcp[%*]} {i} {
+		#var {vitals[$i]} {$gmcp[$i]}
+	};
 	#nop { hp hp-string maxhp mana mana-string maxmana mp mp-string maxmp xp
 		tp carrying ridden ride climb sneak swim light fog weather alertness
 		mood spell-effort position sleeping mount-moves opponent buffer

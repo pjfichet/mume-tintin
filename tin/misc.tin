@@ -38,16 +38,12 @@ quickref_alias {weapon} {
 } {draw %1 from $bag; set default weapon};
 
 quickref_alias {piercing} {
-	#if { "%1" != ""} {
-		#var {piercing} {%1};
-	};
+	#if { "%1" != ""} {#var {piercing} {%1}};
 	#showme {piercing: $piercing.};
 } {set piercing weapon};
 
 quickref_alias {shooting} {
-	#if { "%1" != ""} {
-		#var {shooting} {%1};
-	}
+	#if { "%1" != ""} {#var {shooting} {%1}};
 	#showme {shooting: $shooting.};
 } {set shooting weapon};
 
@@ -64,12 +60,12 @@ quickref_alias {mood} {
 	};
 	#else {
 		#if { "$vitals[mood]" == "wimpy"} {
-			#var {vitals[mood]} {aggressive};
+			#nop var {vitals[mood]} {aggressive};
 			#echo {Change mood aggressive: $wimpy\.};
 			change mood aggressive;
 		};
 		#elseif { "$vitals[mood]" == "aggressive"} {
-			#var {vitals[mood]} {wimpy};
+			#nop var {vitals[mood]} {wimpy};
 			#echo {Change mood wimpy: $wimpy\.};
 			change mood wimpy;
 		};
@@ -102,11 +98,13 @@ quickref_alias {rec} {
 };
 
 #alias {report} {
-	parse_prompt;
+	#nop parse_prompt;
 	#if {"%1" == ""} {#var {report} {#showme}};
 	#else {#var {report} {%1}};
-	#if {"$vitals[opponent-hits]" == ""} {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string].};
-	#else {$report hp: $vitals[hp-string], mana: $vitals[mana-string], mp: $vitals[mp-string], vs: $vitals[opponent-hits].};
+	#if {("$vitals[opponent]" == "null") || ("$vitals[opponent]" == "")} {
+		$report $vitals[hp]/$vitals[maxhp] hp, $vitals[mana]/$vitals[maxmana] mana, $vitals[mp]/$vitals[maxmp] mp.
+	};
+	#else {$report $vitals[hp-string] hp, $vitals[mana-string] mana, $vitals[mp-string] mp,  $vitals[opponent]: $vitals[opponent-hits].};
 };
 
 quickref_alias {chest} {
