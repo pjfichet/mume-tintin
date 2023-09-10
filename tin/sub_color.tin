@@ -64,7 +64,7 @@
 #gag {^You receive your share of experience.$}
 #sub {^%1 is dead! R.I.P.$} {%1 is <129>dead!<099> R.I.P.}
 #nop highlight {You hear %*'s death cry as {he|she|it} collapses.} {light green}
-#nop highlight {^%* disappears into nothing.$} {light green}
+#sub {^%* disappears into nothing.$} {%1 disappears into <129>nothing<099>.}
 
 #nop food
 #nop highlight {^You {begin to feel|are} hungry.$} {light blue}
@@ -73,6 +73,9 @@
 #nop track
 #highlight {^Aha} {light green}
 #nop highlight {^Aha, you have found your victim!$} {light green}
+#nop {^You see some {apparent|clear|faint|plain|vague}{(, bloody)?} tracks of %* leading {north|east|south|west|up|down}, done less than %d {hour|hours} ago.$};
+#sub {leading {north|east|south|west|up|down}} {leading <119>%1<099>};
+
 
 
 #nop reveal
@@ -116,7 +119,7 @@
 #sub {^Ooops! You fumble... and hit yourself HARD!$} {Ooops! You fumble... and <019>hit yourself<099> HARD!}
 #sub {^Your victim is shocked by your hit!$} {Your victim is <029>shocked<099> by your hit!}
 #sub {^You feel a sharp pain there!$} {You feel a <019>sharp pain<099> there!}
-#sub {^%* quickly approaches} {%1 quickly <019>approaches<099>}
+#sub {^%* quickly approaches} {%1 quickly <039>approaches<099>}
 #sub {^{[^/]+} tries to {charge|crush|slash|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} you, but your parry is successful.$} {%1 <039>tries to %2<099> you, but your <039>parry<099> is successful.}
 #sub {^%* joins your fight.$} {%1 <029>joins<099> your fight.}
 #sub {^%* joins %*'s fight.$} {%1 <039>joins<099> %2's fight.}
@@ -132,8 +135,8 @@
 
 
 #nop combat fighting
-#sub {You try to {charge|crush|slash|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} %* but {he|she|it} parries successfully.} {You try to %1 %2 but %3 <019>parries<099> successfully.}
-#sub {%* dodges your attempt to {charge|crush|slash|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} it.} {%1 <019>dodges<099> your attempt to %2 it.}
+#sub {You try to {charge|crush|slash|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} %* but {he|she|it} parries successfully.} {You try to %1 %2 but %3 <039>parries<099> successfully.}
+#sub {%* dodges your attempt to {charge|crush|slash|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} it.} {%1 <039>dodges<099> your attempt to %2 it.}
 #sub {Your head stops stinging.} {Your head <129>stops stinging<099>.}
 
 #sub {^You {barely |lightly |strongly |}{charge|crush|slash|pound|cleave|pierce|stab|shoot|smite|strike|hit|whip} {.+?} {right |left |}{.+?}{ hard| very hard|extremely hard|}{ and tickle it| and shatter it|}.$}
