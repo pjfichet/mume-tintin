@@ -10,6 +10,7 @@ quickref_alias {ce} {showsend cast 'earthquake'} {cast 'earthquake'};
 quickref_alias {ck} {keys} {list teleport keys};
 quickref_alias {ckl} {keyl} {label teleport key};
 quickref_alias {ckf} {castlocatelife %0} {cast 'locate life'};
+quickref_alias {ckw} {castwatchroom %0} {cast 'watch room'};
 quickref_alias {ct} {castteleport %0} {cast 'teleport' key[0]};
 quickref_alias {c1} {castteleport 1} {cast 'teleport' key[1]};
 quickref_alias {c2} {castteleport 2} {cast 'teleport' key[2]};
@@ -42,6 +43,20 @@ quickref_alias {c9} {castteleport 9} {cast 'teleport' key[9]};
 #alias {castteleport} {
 	#if {"%0" == ""} {cast 'teleport' $vkeys[1][key]};
 	#else {cast 'teleport' $vkeys[%0][key]};
+}
+#alias {castwatchroom} {
+	#if {"%0" == ""} {
+		cast 'watch room' $vkeys[1][key] $vkeys[1][mob];
+		#var {watchroom} {$vkeys[1][mob]};
+	};
+	#else {
+		cast 'watch room' $vkeys[%0][key] $vkeys[%0][mob];
+		#var {watchroom} {$vkeys[%0][mob]};
+	};
+	#highlight {[$watchroom]} {magenta};
+	#action {[$watchroom] Your awareness decreases.} {
+		#unhighlight {[$watchroom]};
+	};
 }
 
 #nop {Berel                    - Indoors       Far       key: 'alaerenok'};
