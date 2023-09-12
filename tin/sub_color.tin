@@ -73,8 +73,8 @@
 #nop track
 #highlight {^Aha} {light green}
 #nop highlight {^Aha, you have found your victim!$} {light green}
-#nop {^You see some {apparent|clear|faint|plain|vague}{(, bloody)?} tracks of %* leading {north|east|south|west|up|down}, done less than %d {hour|hours} ago.$};
-#sub {leading {north|east|south|west|up|down}} {leading <119>%1<099>};
+#sub {^You see some {apparent|clear|faint|plain|vague}{, bloody|} tracks of %* leading {north|east|south|west|up|down}, done less than %d {hour|hours} ago.$}
+{You see some %1%2 tracks of %3 leading <049>%4<099>, done less than %5 %6 ago.};
 
 
 
@@ -271,6 +271,9 @@
 #sub {%*'s {sword|shortsword|blade} glows less brightly.$} {%1's %2 <059>glows<099> less brightly.}
 #sub {The glow on %*'s {sword|shortsword|blade} is now just a faint glimmer.} {The <059>glow<099> on %1's %2 is now just a faint glimmer.}
 #sub {The bluish glow on %*'s {sword|shortsword|blade} fades entirely.$} {The bluish <059>glow<099> on %1's %2 fades entirely.}
+
+#nop rings
+#sub {Your %* ring glows{ for a while|}, loosens and falls!} {Your %1 <119>ring<099> glows%2, loosens and <119>falls<099>!}
 
 #nop tentacles
 #sub {^A tentacle {quickly |}entangles %*{.|!}$} {A tentacle %1<119>entangles %2<099>%3};
