@@ -1,26 +1,26 @@
 #nop mage spells;
-quickref_alias {i} {castt {lightning bolt} {%0}};
+alias {i} {castt {lightning bolt} {%0}};
 #nop alias {z} {showsend cast {quake} {%0}};
 
 #nop cast;
-quickref_alias {ci} {showsend cast n 'lightning bolt' %0} {cast n 'lightning bolt'};
-quickref_alias {clight} {showsend cast n 'create light' lantern} {cast n 'creat light'};
-quickref_alias {ce} {showsend cast 'earthquake'} {cast 'earthquake'};
+#alias {ci} {showsend cast n 'lightning bolt' %0};
+#alias {clight} {showsend cast n 'create light' lantern};
+alias {ce} {showsend cast 'earthquake'};
 
-quickref_alias {ck} {keys} {list teleport keys};
-quickref_alias {ckl} {keyl} {label teleport key};
-quickref_alias {ckf} {castlocatelife %0} {cast 'locate life'};
-quickref_alias {ckw} {castwatchroom %0} {cast 'watch room'};
-quickref_alias {ct} {castteleport %0} {cast 'teleport' key[0]};
-quickref_alias {c1} {castteleport 1} {cast 'teleport' key[1]};
-quickref_alias {c2} {castteleport 2} {cast 'teleport' key[2]};
-quickref_alias {c3} {castteleport 3} {cast 'teleport' key[3]};
-quickref_alias {c4} {castteleport 4} {cast 'teleport' key[4]};
-quickref_alias {c5} {castteleport 5} {cast 'teleport' key[5]};
-quickref_alias {c6} {castteleport 6} {cast 'teleport' key[6]};
-quickref_alias {c7} {castteleport 7} {cast 'teleport' key[7]};
-quickref_alias {c8} {castteleport 8} {cast 'teleport' key[8]};
-quickref_alias {c9} {castteleport 9} {cast 'teleport' key[9]};
+#alias {ck} {keys};
+#alias {ckl} {keyl};
+#alias {ckf} {castlocatelife %0};
+#alias {ckw} {castwatchroom %0};
+#alias {ct} {castteleport %0};
+#alias {c1} {castteleport 1};
+#alias {c2} {castteleport 2};
+#alias {c3} {castteleport 3};
+#alias {c4} {castteleport 4};
+#alias {c5} {castteleport 5};
+#alias {c6} {castteleport 6};
+#alias {c7} {castteleport 7};
+#alias {c8} {castteleport 8};
+#alias {c9} {castteleport 9};
 
 
 #nop control weather
@@ -87,14 +87,14 @@ quickref_alias {c9} {castteleport 9} {cast 'teleport' key[9]};
 };
 
 #nop clear key list
-quickref_alias {keyc} {
+#alias {keyc} {
 	#showme {List of keys cleared.};
 	#var {ikeys} {0};
 	#unvar {vkeys};
-} {clear list of teleport keys};
+};
 
 #nop delete some keys
-quickref_alias {keyd} {
+#alias {keyd} {
 	#if {"%2" != ""} {
 		#nop delete from %1 to %2;
 		#math {i} {%1};
@@ -111,4 +111,4 @@ quickref_alias {keyd} {
 		#echo {Deleting key %1.};
 		#unvar {vkeys[%1]};
 	};
-} {delete teleport key <from_key> [to_key]};
+};
