@@ -37,15 +37,6 @@
 	};
 };
 
-#alias {piercing} {
-	#if { "%1" != ""} {#var {piercing} {%1}};
-	#showme {piercing: $piercing.};
-};
-
-#alias {shooting} {
-	#if { "%1" != ""} {#var {shooting} {%1}};
-	#showme {shooting: $shooting.};
-};
 
 #alias mount {
 	#var {mount} {%1};

@@ -319,8 +319,6 @@ mk_quickref {sellall} {sell list of items};
 mk_quickref {flask} {set flask};
 mk_quickref {bag} {set bag};
 mk_quickref {weapon} {wield %1};
-mk_quickref {piercing} {set piercing weapon};
-mk_quickref {shooting} {set shooting weapon};
 mk_quickref {mount} {set mount};
 mk_quickref {mood} {toggle mood, set wimpy %1};
 mk_quickref {rec} {record a list of actions};
