@@ -1,35 +1,44 @@
-#split 0 1
+#nop split the screen;
+#event {CATCH SCREEN SPLIT FILL} {#nop};
+#split 0 2;
+#showme {} {-1};
+#showme {} {-2};
+#showme {} {-3};
 
-#prompt {^PROMPT:%1>:PROMPT$} {<069>%1><099>} {-2};
-#sub {^PROMPT:%1>:PROMPT%2$} {%2};
-#nop action {^PROMPT:%1>:PROMPT$} {#var {prompt} {%1}};
-#nop alias {prompt} {#showme $prompt};
+#nop gag the prompt
+#gag {^>$}
 
-#tick {myprompt} {
-	#showme {m:$vitals[mood] c:$vitals[spell-effort] l:$light t:$target> } {-1};
-} {0.5};
+#nop replace server prompt
+#action {^>$} {
+	#if {"$vitals[ride]" == "true"} {#var {prompt[ride]} {R}};
+	#else {#var {prompt[ride]} {}};
 
-#nop alias {parse_prompt} {
-	#regexp {PROMPT:$prompt>:PROMPT} {PROMPT:{(?:[@*!\)o])?}{(?:[~\(\[+.%fO~UW:=<#])?}{(?:[*'"~=-]{1,2})?}{(?: [RrSsCcW]{1,4})?}{(?: HP:\w+)?}{(?: Mana:\w+)?}{(?: Move:\w+)?}{(?: Mount:\w+)?}{(?: [^:]+:\w+)?}{(?: [^:]+:\w+)?}%*>:PROMPT}
-	{
-		#var {vitals[light]} {&1};
-		#var {vitals[terrain]} {&2};
-		#var {vitals[weather]} {&3};
-		#var {vitals[sneak]} {&4};
-		#var {vitals[hp-string]} {&5};
-		#var {vitals[mana-string]} {&6};
-		#var {vitals[mp-string]} {&7};
-		#var {vitals[mount-moves]} {&8};
-		#var {vitals[opponent-hits]} {&9};
-		#var {vitals[buffer]} {&10};
-		#nop #var {vitalsrest} {&11};
-	}
-	{#showme {Unable to parse the prompt.}};
-	#nop sunlight:*, artificial:! moon:) dark:o;
-	#nop sneak success:S, sneak fail:s;
-	#regexp {$vitals[hp-string]} { HP:{\w+}} {#var {vitals[hp-string]} {&1}} {#var {vitals[hp-string]} {Healthy}};
-	#regexp {$vitals[opponent-hits]} { {[^:]+}:{\w+}} {#var {vitals[opponent-hits]} {&2}} {#var {vitals[opponent-hits]} {}};
-	#regexp {$vitals[mana-string]} { Mana:{\w+}} {#var {vitals[mana-string]} {&1}} {#var {vitals[mana-string]} {full}};
-	#regexp {$vitals[mp-string]} { Move:{\w+}} {#var {vitals[mp-string]} {&1}} {#var {vitals[mp-string]} {full}};
+	#if {"$light" == "on"} {#var {prompt[light]} {!}};
+	#else {#var {prompt[light]} {o}};
+
+
+	#if {"$vitals[hidden]" == "true"} {
+		#var {prompt[sneak]} {$vitals[sneak]H};
+	};
+	#else {
+		#var {prompt[hidden]} {};
+		#var {prompt[sneak]} {<019>$vitals[sneak]<099>};
+	};
+
+
+
+	#var {prompt[state]} {$prompt[light]$prompt[sneak]$prompt[ride]};
+	#var {prompt[health]} {hp:$vitals[hp-string] mp:$vitals[mp-string] ma:$vitals[mana-string]};
+
+	#if {"$vitals[mount-moves]" == ""} {#var {prompt[mount]} {}};
+	#else {#var {prompt[mount]} { mount:$vitals[mount-moves]}};
+
+	#if {"$vitals[buffer]" == ""} {#var {prompt[buffer]} {}};
+	#else {#var {prompt[buffer]} { $vitals[buffer]:$vitals[buffer-hits]}};
+
+	#if {"$vitals[opponent]" == ""} {#var {prompt[opponent]} {}};
+	#else {#var {prompt[opponent]} { > $vitals[opponent]:$vitals[opponent-hits]}};
+
+	#showme {>$vitals[light]$vitals[fog] $prompt[mount]$prompt[buffer]$prompt[opponent]} {-3};
+	#showme {>$prompt[state] $prompt[health] > $target} {-2};
 };
-
