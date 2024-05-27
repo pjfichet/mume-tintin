@@ -8,6 +8,7 @@
 #alias {u} {showsend u};
 #alias {n} {showsend d};
 
+#alias {e} {showsend escape};
 #alias {eh} {showsend escape w};
 #alias {ej} {showsend escape s};
 #alias {ek} {showsend escape n};
@@ -116,7 +117,11 @@
 
 #nop hide
 #alias {hq} {lightor; hide quick};
+#alias {hf} {lightor; hide fast};
+#alias {hn} {lightor; hide normally};
+#alias {hc} {lightor; hide carefully};
 #alias {ht} {lightor; hide thorough};
+
 
 #nop look
 #alias {ll} {lightor; look; exit; lightoff_sneak};
@@ -212,6 +217,9 @@
 #alias {tz} {lightor; showsend track zaugurz*};
 #alias {tmo} {lightor; #if {"%1" != ""} {mount %1}; showsend track $mount};
 
+#nop time
+#alias {ti} {_time_short}
+
 #nop target
 #alias {va} {target 1 animal};
 #alias {vd} {target 1 dunlending};
@@ -261,10 +269,10 @@
 #alias {pur} {scroll purple};
 #alias {vel} {scroll vellum};
 
-
-#alias {ring} {rem ring; get ring $bag; wear ring; put ring $bag};
+#alias {ur} {use ring};
+#alias {ring} {rem ring; get ring all; wear ring; put ring $bag};
 #alias {candle} {rem $weapon; get candle all; hold candle; use candle; wield $weapon};
-#alias {mir} {get miruvor $bag; drink miruvor};
+#alias {mir} {get miruvor all; drink miruvor};
 #alias {pbs} {use stone};
 #alias {nimble} {weapon nimble};
 #alias {elven} {weapon elven};
@@ -275,7 +283,7 @@
 #alias {brd} {weapon runed};
 #alias {sword} {weapon sword};
 #alias {bow} {weapon bow};
-#alias {smoke} {get pipe $bag; rem $weapon; hold pipe; sit; smoke pipe; stand; rem pipe; whield $weapon; put pipe $container;};
+#alias {smoke} {get pipe $bag; rem $weapon; hold pipe; sit; smoke pipe; stand; rem pipe; whield $weapon; put pipe $bag;};
 #alias {lembas} {get lembas all; eat lembas};
 
 #nop yes
