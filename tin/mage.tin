@@ -1,11 +1,11 @@
 #nop mage spells;
-alias {i} {castt {lightning bolt} {%0}};
+#alias {i} {castt {lightning bolt} {%0}};
 #nop alias {z} {showsend cast {quake} {%0}};
 
 #nop cast;
 #alias {ci} {showsend cast n 'lightning bolt' %0};
 #alias {clight} {showsend cast n 'create light' lantern};
-alias {ce} {showsend cast 'earthquake'};
+#alias {ce} {showsend cast 'earthquake'};
 
 #alias {ck} {keys};
 #alias {ckl} {keyl};
@@ -47,17 +47,15 @@ alias {ce} {showsend cast 'earthquake'};
 #alias {castwatchroom} {
 	#if {"%0" == ""} {
 		cast 'watch room' $vkeys[1][key] $vkeys[1][mob];
-		#var {watchroom} {$vkeys[1][mob]};
+		#highlight {[$vkeys[1][mob]]} {magenta};
 	};
 	#else {
 		cast 'watch room' $vkeys[%0][key] $vkeys[%0][mob];
-		#var {watchroom} {$vkeys[%0][mob]};
+		#highlight {[$vkeys[%0][mob]]} {magenta};
 	};
-	#highlight {[$watchroom]} {magenta};
-	#action {[$watchroom] Your awareness decreases.} {
-		#unhighlight {[$watchroom]};
-	};
-}
+};
+#action {[%1] Your awareness decreases.} {#unhighlight {[%1]}};
+
 
 #nop {Berel                    - Indoors       Far       key: 'alaerenok'};
 #action {^%*- %*{Very near|Near|Far|Very far}%s key: '%w'$} {
@@ -67,7 +65,7 @@ alias {ce} {showsend cast 'earthquake'};
 	#format {vkeys[$ikeys][dist]} {%-9s} {%3};
 	#var {vkeys[$ikeys][key]} {%5};
 	#format {i} {%+3s} {$ikeys};
-	#showme {$i: $vkeys[$ikeys][mob] $vkeys[$ikeys][room] $vkeys[$ikeys][dist]};
+	#showme {$i: $vkeys[$ikeys][mob] $vkeys[$ikeys][room] $vkeys[$ikeys][dist] $vkeys[$ikeys][key]};
 	#line gag;
 }
 
