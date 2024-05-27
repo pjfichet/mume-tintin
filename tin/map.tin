@@ -1,0 +1,66 @@
+#nop mume mini map
+
+#run {python} {/home/pj/doc/src/mume-map/venv/bin/python -B}
+#python import mumemap;
+#action {^map: %1$} {#@gts{$session} #showme {%1}};
+#gts;
+
+#alias {mopen} {#python m = mumemap.Map('map.json')};
+#alias {mclose} {#python m.close()};
+#alias {mdump} {#python m.dump()};
+#alias {mpath} {#python m.path('%1')};
+#alias {mroom} {#python m.room("$room[id]", "$room[name]", """$room[desc]""")};
+#alias {mfind} {#python m.find("%1")};
+#action {^Exits:} {
+	#python m.move("$movement", "$room[id]", "$room[name]", """$room[desc]""");
+	#var {movement} {};
+};
+
+#action {^You just see a dense fog around you...$} {
+	#python m.move("$movement", None, None, None);
+	#var {movement} {};
+}
+
+#action {^It is pitch black...$} {
+	#python m.move("$movement", None, None, None);
+	#var {movement} {};
+}
+
+#var {movement} {}
+#action {^n$} {#var {movement} {north}}
+#action {^s$} {#var {movement} {south}}
+#action {^w$} {#var {movement} {west}}
+#action {^e$} {#var {movement} {east}}
+#action {^u$} {#var {movement} {up}}
+#action {^d$} {#var {movement} {down}}
+#action {^escape n$} {#var {movement} {north}}
+#action {^escape s$} {#var {movement} {south}}
+#action {^escape w$} {#var {movement} {west}}
+#action {^escape e$} {#var {movement} {east}}
+#action {^escape u$} {#var {movement} {up}}
+#action {^escape d$} {#var {movement} {down}}
+#action {^You flee north.$} {#var {movement} {north}}
+#action {^You flee south.$} {#var {movement} {south}}
+#action {^You flee west.$} {#var {movement} {west}}
+#action {^You flee east.$} {#var {movement} {east}}
+#action {^You flee up.$} {#var {movement} {up}}
+#action {^You flee down.$} {#var {movement} {down}}
+
+
+#var {session} {gts}
+#event {SESSION CONNECTED} {
+	#gts #var {session} {%0};
+}
+
+#event {SESSION ACTIVATED} {
+	#gts #var {session} {%0};
+	#if {"%0" == "python"} {#gts};
+}
+
+#event {SESSION DISCONNECTED} {
+	#gts #var {session} {%0};
+	#if {"%0" == "mume"} {
+		#python m.close();
+		#gts;
+	};
+};
