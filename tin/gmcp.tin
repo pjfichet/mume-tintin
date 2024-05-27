@@ -1,36 +1,71 @@
-#EVENT {SESSION CONNECTED}
-{
-    #variable TELNET[IAC]  \xFF;
-    #variable TELNET[DONT] \xFE;
-    #variable TELNET[DO]   \xFD;
-    #variable TELNET[WONT] \xFC;
-    #variable TELNET[WILL] \xFB;
-    #variable TELNET[SB]   \xFA;
-    #variable TELNET[SE]   \xF0;
-    #variable TELNET[GMCP] \xC9;
-}
+#var {telnet[iac]} {\xFF};
+#var {telnet[do]} {\xFD};
+#var {telnet[sb]} {\xFA};
+#var {telnet[se]} {\xF0};
+#var {telnet[gmcp]} {\xC9};
 
-#EVENT {IAC WILL GMCP}
-{
-	#info SYSTEM save;
-    #send {$TELNET[IAC]$TELNET[DO]$TELNET[GMCP]\};
-    #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] Core.Hello { "client": "$info[SYSTEM][CLIENT_NAME]", "version": "$info[SYSTEM][CLIENT_VERSION]" } $TELNET[IAC]$TELNET[SE]\};
-    #send {$TELNET[IAC]$TELNET[SB]$TELNET[GMCP] Core.Supports.Set [ "Char 1", "Char.Vitals 1" ] $TELNET[IAC]$TELNET[SE]\};
-}
+#alias {gmcp} {
+     #send {$telnet[iac]$telnet[sb]$telnet[gmcp]%0$telnet[iac]$telnet[se]};
+};
 
-#EVENT {IAC SB GMCP Char.Vitals IAC SE}
-{
-	#var gmcp {%0};
-	#foreach {*gmcp[%*]} {i} {
-		#var {vitals[$i]} {$gmcp[$i]}
+#event {IAC WILL GMCP} {
+	#send {$telnet[iac]$telnet[do]$telnet[gmcp]};
+	gmcp Core.Hello {"client":"$info[SYSTEM][CLIENT_NAME]", "version":"$info[SYSTEM][CLIENT_VERSION]"};
+    gmcp Core.Supports.Set [ "Char 1", "Char.Vitals 1", "Room 1", "Room.Info 1" ];
+};
+
+#event {IAC SB GMCP Char.Vitals IAC SE} {
+	#var gmcpvar {%0};
+	#foreach {*gmcpvar[%*]} {i} {
+		#if {"$gmcpvar[$i]" == "null"} {
+			#var {vitals[$i]} {}
+		};
+		#else {
+			#var {vitals[$i]} {$gmcpvar[$i]}
+		};
 	};
-	#nop { hp hp-string maxhp mana mana-string maxmana mp mp-string maxmp xp
-		tp carrying ridden ride climb sneak swim light fog weather alertness
-		mood spell-effort position sleeping mount-moves opponent buffer
-		opponent-hits buffer-hits};
+};
+
+#var {room[id]} {}
+#var {room[name]} {}
+#var {room[desc]} {}
+
+#event {IAC SB GMCP Room.Info IAC SE} {
+	#var gmcpvar {%0};
+	#foreach {*gmcpvar[%*]} {i} {
+		#var {room[$i]} {$gmcpvar[$i]};
+	};
 };
 
 
-
-
-
+#var {vitals[alertness]} {};
+#var {vitals[buffer-hits]} {};
+#var {vitals[buffer]} {};
+#var {vitals[carrying]} {};
+#var {vitals[climb]} {};
+#var {vitals[fog]} {};
+#var {vitals[hidden]} {};
+#var {vitals[hp-string]} {};
+#var {vitals[hp]} {};
+#var {vitals[light]} {};
+#var {vitals[mana-string]} {};
+#var {vitals[mana]} {};
+#var {vitals[maxhp]} {};
+#var {vitals[maxmana]} {};
+#var {vitals[maxmp]} {};
+#var {vitals[mood]} {};
+#var {vitals[mount-moves]} {};
+#var {vitals[mp-string]} {};
+#var {vitals[mp]} {};
+#var {vitals[opponent-hits]} {};
+#var {vitals[opponent]} {};
+#var {vitals[position]} {};
+#var {vitals[ridden]} {};
+#var {vitals[ride]} {};
+#var {vitals[sleeping]} {};
+#var {vitals[sneak]} {};
+#var {vitals[spell-effort]} {};
+#var {vitals[swim]} {};
+#var {vitals[tp]} {};
+#var {vitals[weather]} {};
+#var {vitals[xp]} {};
