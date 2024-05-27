@@ -18,12 +18,12 @@
 
 #alias {doorname} {
 	#if {"$door" == "a"} {#var {door} {$doorauto}};
-	#elseif {"$door" == "h"} {#var {door} {w}};
-	#elseif {"$door" == "l"} {#var {door} {e}};
-	#elseif {"$door" == "j"} {#var {door} {s}};
-	#elseif {"$door" == "k"} {#var {door} {n}};
-	#elseif {"$door" == "u"} {#var {door} {u}};
-	#elseif {"$door" == "n"} {#var {door} {d}};
+	#elseif {"$door" == "h"} {#var {door} {exit w}};
+	#elseif {"$door" == "l"} {#var {door} {exit e}};
+	#elseif {"$door" == "j"} {#var {door} {exit s}};
+	#elseif {"$door" == "k"} {#var {door} {exit n}};
+	#elseif {"$door" == "u"} {#var {door} {exit u}};
+	#elseif {"$door" == "n"} {#var {door} {exit d}};
 }
 
 #var {dooraction} {};
@@ -52,9 +52,7 @@
 
 	#if {"$dooraction" != ""} {
 		#showme $dooraction $door;
-		#regexp {$door} {^{n|e|s|w|u|d}$}
-			{#send {secretaction $dooraction $door}}
-			{#send {$dooraction $door}};
+		#send {$dooraction $door};
 	};
 	#var {dooraction} {};
 };
