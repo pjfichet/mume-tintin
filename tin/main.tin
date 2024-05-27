@@ -1,11 +1,15 @@
 #nop config
 #read $src/config.tin
 
+#nop map
+#read $src/map.tin;
+#nop read $src/proxy.tin
+
 #nop Substitutions
-#read $src/sub_herb.tin
+#nop read $src/sub_herb.tin
 #read $src/sub_key.tin
 #read $src/sub_lockpick.tin
-#read $src/sub_mob.tin
+#nop read $src/sub_mob.tin
 #read $src/sub_spell.tin
 #read $src/sub_spelltime.tin
 #read $src/sub_color.tin
@@ -19,44 +23,32 @@
 #read $src/label.tin
 #read $src/light.tin
 #read $src/xp.tin
-#read $src/path.tin
-#read $src/prompt.tin
+#read $src/time.tin;
 #read $src/gmcp.tin
-#read $src/alias.tin
 #read $src/action.tin
+#read $src/prompt.tin
+#read $src/alias.tin
 #read $src/macros.tin
 #read $src/quickref.tin;
 
 
-#event {PROGRAM START} {
-	#nop session {mume} {193.134.218.98} {4242};
-	#session {mume} {127.0.0.1} {4000};
+#alias {mume} {
+	#gts;
+	#nop ssl is like session;
+	#ssl {mume} {193.134.218.98} {4242};
 	$name;
 	$pass;
 }
 
-#event {SESSION DISCONNECTED} {
-	#if {"%0" == "mume"} {
-		#gts;
-		#nop mapper exit();
-		#delay {1} {#end};
-	}
-}
+#event {PROGRAM START} {mume};
 
-#nop action {^If you have never played MUME before, type NEW to create a new character,$} {
-	xpreset;
-}
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
-	#send {\xFF\xFD\x01};
+	#send {change pager off};
 	#send {info CHARNAME: %M.};
 	#send {info XPCOUNTER: %x %t %X %T needed.};
 	#send {change wimpy $wimpy};
+	mopen;
 	login;
 	#cr;
 };
-
-
-#nop Deal with blank lines
-#gag {^{(?:[\s]*)}$};
-
