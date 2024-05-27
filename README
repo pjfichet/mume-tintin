@@ -6,7 +6,7 @@ play with a good telnet client, a set of aliases and scripts, and a
 mapper. This project provides the aliases and scripts, made to work
 in conjuction with:
 - the tintin++ client (https://tintin.mudhalla.net/),
-- the mapperproxy-mume mapper
+- the (optionnal) mapperproxy-mume mapper
   (https://github.com/nstockton/mapperproxy-mume).
 
 Mume-tintin is a fork of an abandonned project named tintin-mume by
