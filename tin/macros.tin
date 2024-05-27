@@ -12,6 +12,9 @@
 #macro {ù} {u}
 #macro {\eu} {u}
 
+#nop escape
+#macro {\ee} {e}
+
 #nop movement
 #macro {¿} {,}
 #macro {\e,} {,}
