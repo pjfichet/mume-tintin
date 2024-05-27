@@ -56,15 +56,16 @@
 
 #action {^You attempt to hide yourself.$} {
 	#action {^Ok.$} {
-		#var {light} {off};
 		#unaction {^Ok.$};
+		#var {light} {off};
+		#showme {<109>You feel hidden.<099>};
 	};
-	#delay {13} {#unaction {^Ok.$}};
+	#delay {25} {#unaction {^Ok.$}};
 };
 
-#action {^Hmm... It seems there is no sign of %* here.} {lightoff_sneak}
-#action {^Hmm... you have lost the track.} {lightoff_sneak}
-#action {^You stop searching} {lightoff_sneak}
-#action {^You don't see anything special there...} {lightoff_sneak}
-#action {^You skillfully discover hidden %*} {lightoff_sneak}
-#action {^You found {a|an} %*.} {lightoff_sneak}
+#nop action {^Hmm... It seems there is no sign of %* here.} {lightoff_sneak}
+#nop action {^Hmm... you have lost the track.} {lightoff_sneak}
+#nop action {^You stop searching} {lightoff_sneak}
+#nop action {^You don't see anything special there...} {lightoff_sneak}
+#nop action {^You skillfully discover hidden %*} {lightoff_sneak}
+#nop action {^You found {a|an} %*.} {lightoff_sneak}
