@@ -6,13 +6,30 @@
 #nop 3 - Yellow   8 - Skip	 	;
 #nop 4 - Blue     9 - Default	;
 
-#nop communication
-#substitute {^NARRATE:%1:NARRATE$} {<039>%1<099>}
-#substitute {^PRAY:%1:PRAY$} {<169>%1<099>}
-#substitute {^TELL:%1:TELL$} {<069>%1<099>}
-#substitute {^SAY:%1:SAY$} {<069>%1<099>}
-#substitute {^EMOTE:%1:EMOTE$} {<069>%1<099>}
-#substitute {^NAME:%1:NAME$} {<029>%1<099>}
+#nop Deletes with blank lines
+#gag {^{(?:[\s]*)}$};
+#nop uncomment to delete 'Ok.'
+#nop gag {^Ok.$};
+
+#nop Prompt
+#sub {:wounded} {:<039>wounded<099>}
+#sub {:bad} {:<019>bad<099>}
+#sub {:awful} {:<019>awful<099>}
+#sub {:dying} {:<019>dying<099>}
+#sub {:warm} {:<039>warm<099>}
+#sub {:cold} {:<019>cold<099>}
+#sub {:icy} {:<019>icy<099>}
+#sub {:tired} {:<039>tired<099>}
+#sub {:slow} {:<039>slow<099>}
+#sub {:weak} {:<019>weak<099>}
+#sub {:fainting} {:<019>fainting<099>}
+#sub {:exhausted} {:<019>exhausted<099>}
+#sub {^>!} {<149>!<099>}
+#sub {^>*} {<039>*<099>}
+#sub {^>)} {<179>)<099>}
+#sub {^>o} {<109>o<099>}
+
+#nop You are trapped by some roots.
 
 #nop Map
 #highlight {you enter the enchanted forest.$} {bold green}
@@ -21,15 +38,17 @@
 #highlight {^The ferry is docked here} {bold green}
 #highlight {^The ferry has arrived} {bold green}
 #highlight {^The trees confuse you} {bold red}
-#nop sub {^Exits: %*} {Exits: %1}
+#highlight {^Hidden: %*} {bold yellow}
+#highlight {^Deathtrap: %*} {bold red}
+#nop highlight {^Exits: %*} {bold yellow}
 
 #nop time
-#sub {^Time left until {NIGHT|DAY} is less than %* tick} {Time left until <049>%1<099> is less than <049>%2<099> tick};
+#sub {^Time left until {night|day} is less than %* tick} {Time left until <049>%1<099> is less than <049>%2<099> tick};
 
 #nop door
 #sub {^The %1 closes quietly.$} {The <139>%1<099> closes quietly.}
 #sub {^The %w {is|are} {open|closed}.$} {The <139>%1<099> %2 %3.}
-#sub {^You skillfully discover a hidden %w.$} {You skillfully discover a hidden <139>%1<099>.}
+#sub {^You skilfully discover{ a|} hidden %w.$} {You skilfully discover%1 hidden <139>%2<099>.}
 #sub {The %w {is|are} opened from the other side.$} {The <139>%1<099> %2 opened from the other side.}
 #sub {^The %w {seem|seems} to be closed.$} {The <139>%1<099> %2 to be closed.}
 #sub {^The %w {close|closes} quietly.$} {The <139>%1<099> %2 quietly.}
@@ -88,8 +107,8 @@
 #sub {(g{.}) leaves {north|south|west|east|up|above|down|below}} {<039>(g%1)<099> leaves <139>%2<099>}
 #sub {{Orc|Troll|Man|Woman|Elf|Half-Elf|Dwarf|Hobbit|Bear|Numenorean|N\xFAmen\xF3rean|Númenórean}* leaves {north|south|west|east|up|above|down|below}} {<179>%1*<099> leaves <149>%2<099>}
 
-#nop sub {^%* has arrived from {the north|the south|the west|the east|above|below}{ riding %*| sneaking|}.$} {%1 has <149>arrived<099> from <099>%2<099>%3<099>.}
-#sub {^%* leaves {north|south|west|east|up|down|above|below}{ riding %*| sneaking|}.$} {%1 leaves <049>%2<099>%3<099>.}
+#nop sub {^%* has arrived from {the north|the south|the west|the east|above|below}{ riding .*| sneaking|}.$} {%1 has <149>arrived<099> from <099>%2<099>%3<099>.}
+#sub {^%* leaves {north|south|west|east|up|down|above|below}{ riding .*| sneaking|}.$} {%1 leaves <049>%2<099>%3<099>.}
 #nop sub {^%* has suddenly arrived.} {%1 has suddenly <149>arrived<099>.}
 
 #sub {^You hear a death cry from {the |}{north|south|west|east|above|below}.$} {You hear a <139>death cry<099> from %1<139>%2<099>.}
@@ -238,6 +257,7 @@
 #nop aura
 #highlight {red aura} {red}
 #highlight {red tones} {red}
+#highlight {[blue]} {blue}
 #nop highlight {white tones} {green}
 
 #nop third person spells
