@@ -1,3 +1,17 @@
+#alias {proxy} {
+	#gts;
+	#session {proxy} {127.0.0.1} {4000};
+	$name;
+	$pass;
+	#substitute {^NARRATE:%1:NARRATE$} {<039>%1<099>};
+	#substitute {^PRAY:%1:PRAY$} {<169>%1<099>};
+	#substitute {^TELL:%1:TELL$} {<069>%1<099>};
+	#substitute {^SAY:%1:SAY$} {<069>%1<099>};
+	#substitute {^EMOTE:%1:EMOTE$} {<069>%1<099>};
+	#substitute {^NAME:%1:NAME$} {<029>%1<099>};
+	#substitute {^PROMPT:%1:PROMPT$} {%1};
+};
+
 #var {path_mark} {}
 #var {path_domark} {0}
 #var {path_dodeath} {0}
@@ -38,4 +52,3 @@
 	#if { "%0" != "" } {#var {path_dest} {%0}};
 	#send {step $path_dest};
 }
-
