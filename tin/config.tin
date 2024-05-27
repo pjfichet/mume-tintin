@@ -21,7 +21,7 @@
 #config		{COLOR PATCH} {OFF}
 #config		{CONVERT META} {OFF}
 #config		{DEBUG TELNET} {OFF}
-#config		{MCCP} {OFF}
+#config		{MCCP} {ON}
 #config		{LOG LEVEL} {HIGH}
 #config		{COMMAND COLOR}  {}
 #config		{COMMAND ECHO}  {ON}
@@ -39,12 +39,12 @@
 #config		{VERBATIM CHAR}  {\}
 #config		{VERBOSE}  {OFF}
 #config		{WORDWRAP}  {ON}
-#pathdir	{n}  {s}  {1}
-#pathdir	{e}  {w}  {2}
-#pathdir	{s}  {n}  {4}
-#pathdir	{w}  {e}  {8}
-#pathdir	{u}  {d}  {16}
-#pathdir	{d}  {u}  {32}
+#nop pathdir	{n}  {s}  {1}
+#nop pathdir	{e}  {w}  {2}
+#nop pathdir	{s}  {n}  {4}
+#nop pathdir	{w}  {e}  {8}
+#nop pathdir	{u}  {d}  {16}
+#nop pathdir	{d}  {u}  {32}
 
 
 
