@@ -10,42 +10,9 @@
 #alias {mdump} {#python m.dump()};
 #alias {mpath} {#python m.path('%1')};
 #alias {mroom} {#python m.room("$room[id]", "$room[name]", """$room[desc]""")};
-#alias {mfind} {#python m.find("%1")};
-#action {^Exits:} {
-	#python m.move("$movement", "$room[id]", "$room[name]", """$room[desc]""");
-	#var {movement} {};
-};
-
-#action {^You just see a dense fog around you...$} {
-	#python m.move("$movement", None, None, None);
-	#var {movement} {};
-}
-
-#action {^It is pitch black...$} {
-	#python m.move("$movement", None, None, None);
-	#var {movement} {};
-}
-
-#var {movement} {}
-#action {^n$} {#var {movement} {north}}
-#action {^s$} {#var {movement} {south}}
-#action {^w$} {#var {movement} {west}}
-#action {^e$} {#var {movement} {east}}
-#action {^u$} {#var {movement} {up}}
-#action {^d$} {#var {movement} {down}}
-#action {^escape n$} {#var {movement} {north}}
-#action {^escape s$} {#var {movement} {south}}
-#action {^escape w$} {#var {movement} {west}}
-#action {^escape e$} {#var {movement} {east}}
-#action {^escape u$} {#var {movement} {up}}
-#action {^escape d$} {#var {movement} {down}}
-#action {^You flee north.$} {#var {movement} {north}}
-#action {^You flee south.$} {#var {movement} {south}}
-#action {^You flee west.$} {#var {movement} {west}}
-#action {^You flee east.$} {#var {movement} {east}}
-#action {^You flee up.$} {#var {movement} {up}}
-#action {^You flee down.$} {#var {movement} {down}}
-
+#alias {mnote} {#python m.findNote("%1")};
+#alias {mlabel} {#python m.findLabel("%1")};
+#alias {mmove} {#python m.move("$lastdir", "$room[id]", "$room[name]", """$room[desc]""")};
 
 #var {session} {gts}
 #event {SESSION CONNECTED} {
