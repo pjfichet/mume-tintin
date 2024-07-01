@@ -26,26 +26,6 @@
 	};
 };
 
-#var {dir} {};
-#event {IAC SB GMCP Event.Moved IAC SE} {
-	#var gmcpvar {%0};
-	#var {lastdir} {$gmcpvar[dir]};
-};
-
-
-
-#var {room[id]} {}
-#var {room[name]} {}
-#var {room[desc]} {}
-
-#event {IAC SB GMCP Room.Info IAC SE} {
-	#var gmcpvar {%0};
-	#foreach {*gmcpvar[%*]} {i} {
-		#var {room[$i]} {$gmcpvar[$i]};
-	};
-	mmove;
-};
-
 
 #var {vitals[alertness]} {};
 #var {vitals[buffer-hits]} {};

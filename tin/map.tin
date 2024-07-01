@@ -12,7 +12,26 @@
 #alias {mroom} {#python m.room("$room[id]", "$room[name]", """$room[desc]""")};
 #alias {mnote} {#python m.findNote("%1")};
 #alias {mlabel} {#python m.findLabel("%1")};
-#alias {mmove} {#python m.move("$lastdir", "$room[id]", "$room[name]", """$room[desc]""")};
+#alias {mmove} {#python m.move("$room[dir]", "$room[id]", "$room[name]", """$room[desc]""")};
+
+#var {room[dir]} {};
+#event {IAC SB GMCP Event.Moved IAC SE} {
+	#var gmcpvar {%0};
+	#var {room[dir]} {$gmcpvar[dir]};
+};
+
+#event {IAC SB GMCP Room.Info IAC SE} {
+	#var gmcpvar {%0};
+	#var {room[id]} {};
+	#var {room[name]} {};
+	#var {room[desc]} {};
+	#foreach {*gmcpvar[%*]} {i} {
+		#var {room[$i]} {$gmcpvar[$i]};
+	};
+	mmove;
+	#var {room[dir]} {};
+};
+
 
 #var {session} {gts}
 #event {SESSION CONNECTED} {
