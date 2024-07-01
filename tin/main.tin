@@ -40,7 +40,10 @@
 	$pass;
 }
 
-#event {PROGRAM START} {mume};
+#event {PROGRAM START} {
+	#screen clear all;
+	mume;
+};
 
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
@@ -49,6 +52,7 @@
 	#send {info XPCOUNTER: %x %t %X %T needed.};
 	#send {change wimpy $wimpy};
 	mopen;
+	#screen clear all;
 	login;
 	#cr;
 };
