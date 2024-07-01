@@ -13,8 +13,8 @@
 	#if {"$vitals[ride]" == "true"} {#var {prompt[ride]} {R}};
 	#else {#var {prompt[ride]} {}};
 
-	#if {"$light" == "on"} {#var {prompt[light]} {!}};
-	#else {#var {prompt[light]} {o}};
+	#if {"$light" == "on"} {#var {prompt[light]} {<149>!<099>}};
+	#else {#var {prompt[light]} {<279>o<099>}};
 
 
 	#if {"$vitals[hidden]" == "true"} {
@@ -26,9 +26,22 @@
 	};
 
 
+	#format {prompt[state]} {%s%s%s mo:%s al:%s hp:%s mp:%s ma:%s > %s}
+		{$prompt[light]}
+		{$prompt[sneak]}
+		{$prompt[ride]}
+		{$vitals[mood]}
+		{$vitals[alertness]}
+		{$vitals[hp-string]}
+		{$vitals[mp-string]}
+		{$vitals[mana-string]}
+		{$target};
 
-	#var {prompt[state]} {$prompt[light]$prompt[sneak]$prompt[ride]};
-	#var {prompt[health]} {hp:$vitals[hp-string] mp:$vitals[mp-string] ma:$vitals[mana-string]};
+	#if {"$vitals[light]" == "!"} {#var {prompt[roomlight]} {<149>!<099>}};
+	#elseif {"$vitals[light]" == "*"} {#var {prompt[roomlight]} {<039>*<099>}};
+	#elseif {"$vitals[light]" == ")"} {#var {prompt[roomlight]} {<179>)<099>}};
+	#elseif {"$vitals[light]" == "o"} {#var {prompt[roomlight]} {<279>o<099>}};
+
 
 	#if {"$vitals[mount-moves]" == ""} {#var {prompt[mount]} {}};
 	#else {#var {prompt[mount]} { mount:$vitals[mount-moves]}};
@@ -39,6 +52,14 @@
 	#if {"$vitals[opponent]" == ""} {#var {prompt[opponent]} {}};
 	#else {#var {prompt[opponent]} { > $vitals[opponent]:$vitals[opponent-hits]}};
 
-	#showme {>$vitals[light]$vitals[fog] $prompt[mount]$prompt[buffer]$prompt[opponent]} {-3};
-	#showme {>$prompt[state] $prompt[health] > $target} {-2};
+	#format {prompt[room]} {%s%s %s%s%s}
+		{$prompt[roomlight]}
+		{$vitals[fog]}
+		{$prompt[mount]}
+		{$prompt[buffer]}
+		{$prompt[opponent]};
+
+	#showme {$prompt[room]} {-3};
+	#showme {$prompt[state]} {-2};
 };
+
