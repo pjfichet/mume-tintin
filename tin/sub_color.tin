@@ -24,11 +24,6 @@
 #sub {:weak} {:<019>weak<099>}
 #sub {:fainting} {:<019>fainting<099>}
 #sub {:exhausted} {:<019>exhausted<099>}
-#sub {^>!} {<149>!<099>}
-#sub {^>*} {<039>*<099>}
-#sub {^>)} {<179>)<099>}
-#sub {^>o} {<109>o<099>}
-
 #nop You are trapped by some roots.
 
 #nop Map
@@ -38,25 +33,26 @@
 #highlight {^The ferry is docked here} {bold green}
 #highlight {^The ferry has arrived} {bold green}
 #highlight {^The trees confuse you} {bold red}
-#highlight {^Hidden: %*} {bold yellow}
+#highlight {^Exits: %*} {bold white}
+#highlight {^Hidden: %*} {bold white}
 #highlight {^Deathtrap: %*} {bold red}
-#nop highlight {^Exits: %*} {bold yellow}
+#highlight {^Note: %*} {bold white}
 
 #nop time
 #sub {^Time left until {night|day} is less than %* tick} {Time left until <049>%1<099> is less than <049>%2<099> tick};
 
 #nop door
-#sub {^The %1 closes quietly.$} {The <139>%1<099> closes quietly.}
-#sub {^The %w {is|are} {open|closed}.$} {The <139>%1<099> %2 %3.}
-#sub {^You skilfully discover{ a|} hidden %w.$} {You skilfully discover%1 hidden <139>%2<099>.}
-#sub {The %w {is|are} opened from the other side.$} {The <139>%1<099> %2 opened from the other side.}
-#sub {^The %w {seem|seems} to be closed.$} {The <139>%1<099> %2 to be closed.}
-#sub {^The %w {close|closes} quietly.$} {The <139>%1<099> %2 quietly.}
-#sub {opens the %*.$} {opens the <139>%1<099>.}
-#sub {closes the %*.$} {closes the <139>%1<099>.}
-#sub {^The %* {seem|seems} to blur for a while.$} {The <139>%1<099> %2 to <059>blur<099> for a while.}
-#sub {^The %* {blur|blurs} for a while.$} {The <139>%1<099> <059>%2<099> for a while.}
-#sub {^The %* is filled with a bright light.$} {The <139>%1<099> is filled with a <059>bright light<099>.}
+#sub {^The %1 closes quietly.$} {The <039>%1<099> closes quietly.}
+#sub {^The %w {is|are} {open|closed}.$} {The <039>%1<099> %2 %3.}
+#sub {^You skilfully discover{ a|} hidden %w.$} {You skilfully discover%1 hidden <039>%2<099>.}
+#sub {The %w {is|are} opened from the other side.$} {The <039>%1<099> %2 opened from the other side.}
+#sub {^The %w {seem|seems} to be closed.$} {The <039>%1<099> %2 to be closed.}
+#sub {^The %w {close|closes} quietly.$} {The <039>%1<099> %2 quietly.}
+#sub {opens the %*.$} {opens the <039>%1<099>.}
+#sub {closes the %*.$} {closes the <039>%1<099>.}
+#sub {^The %* {seem|seems} to blur for a while.$} {The <039>%1<099> %2 to <059>blur<099> for a while.}
+#sub {^The %* {blur|blurs} for a while.$} {The <039>%1<099> <059>%2<099> for a while.}
+#sub {^The %* is filled with a bright light.$} {The <039>%1<099> is filled with a <059>bright light<099>.}
 
 
 #nop ride
@@ -184,8 +180,10 @@
 
 #nop stab
 #highlight {^For a successful backstab you need to be wielding a suitable weapon.$} {light red}
-#sub {^%* makes a strange sound{(?: but is suddenly very silent)?}, as you place %* in {his|her|its} back.$}
-{%1<099> makes a <129>strange sound<099>%2, as you place %3 in %4 back.};
+#nop sub {^%* makes a strange sound{(?: but is suddenly very silent)?}, as you place %* in {his|her|its} back.$}
+#nop {%1<099> makes a <129>strange sound<099>%2, as you place %3 in %4 back.};
+#sub {^%* makes a strange sound}
+{%1<099> makes a <129>strange sound<099>};
 #sub {^Suddenly %* stabs you in the back.$} {<119>%0<099>};
 #sub {^Oops} {<119>Oops<099>}
 #nop highlight {^Oops, your victim caught you by surprise!$} {light red}

@@ -1,6 +1,6 @@
 #alias showsend {
 	#send {%0};
-	#showme {<109>%0<099>};
+	#showme {<279>%0<099>};
 };
 #alias {date} {
 	#system {date};
@@ -13,6 +13,7 @@
 	#foreach {$selllist} {i} {sell all.$i};
 };
 
+#var {mount} {};
 #alias {mount} {
 	#var {mount} {%1};
 	#showme {mount: $mount.};
@@ -23,7 +24,7 @@
 	#showme {flask: $flask.};
 };
 
-#alias bag {
+#alias {bag} {
 	#var {bag} {%1};
 	#showme {bag: $bag.};
 };
@@ -38,27 +39,20 @@
 };
 
 
-#alias mount {
-	#var {mount} {%1};
-	#showme {mount: $mount.};
-};
-
 #alias {mood} {
 	#if { "%0" != ""} {
 		#var {wimpy} {%0};
-		#nop echo {Change wimpy $wimpy\.};
 		#send {change wimpy $wimpy};
 	};
 	#else {
 		#if { "$vitals[mood]" == "wimpy"} {
-			#echo {Change mood aggressive: $wimpy\.};
 			change mood aggressive;
 		};
 		#elseif { "$vitals[mood]" == "aggressive"} {
-			#echo {Change mood wimpy: $wimpy\.};
 			change mood wimpy;
 		};
 	};
+	#echo {<279>Change mood $vitals[mood]: $wimpy\.<099>};
 };
 
 #alias {rec} {
@@ -67,7 +61,7 @@
 		#replace {reclist} { } {;};
 	};
 	#elseif {"$reclist" != ""} {
-		#showme {<109>$reclist<099>};
+		#showme {<279>$reclist<099>};
 		#foreach {$reclist} {i} {$i};
 	};
 	#else {#showme {Nothing is recorded.}};
@@ -94,7 +88,7 @@
 
 #alias {chest} {
 	#if {"%0" != ""} {
-		#showme {<109>open chest\; look in chest\; get %1 chest<099>};
+		#showme {<279>open chest\; look in chest\; get %1 chest<099>};
 		#send {open chest};
 		#send {look in chest};
 		#send {get %1 chest};
@@ -114,7 +108,7 @@
 	showsend cast 'create food';
 }
 
-alias {scroll} {
+#alias {scroll} {
 	showsend get %1 all;
 	showsend recite %1 %2;
 };
