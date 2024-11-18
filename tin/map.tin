@@ -1,17 +1,20 @@
 #nop mume mini map
 
-#run {python} {/home/pj/doc/src/mume-map/venv/bin/python -B}
-#python import mumemap;
+#run {python} {$mumemap/venv/bin/python -B}
+#python from mumemap.map import Map
+#python m = Map()
+#python m.log('map.log', 3, True)
 #action {^map: %1$} {#@gts{$session} #showme {%1}};
 #gts;
 
-#alias {mopen} {#python m = mumemap.Map('map.json')};
+#alias {mopen} {#python m.open('map.json')};
 #alias {mclose} {#python m.close()};
 #alias {mdump} {#python m.dump()};
 #alias {mpath} {#python m.path('%1')};
 #alias {mroom} {#python m.room("$room[id]", "$room[name]", """$room[desc]""")};
 #alias {mnote} {#python m.findNote("%1")};
 #alias {mlabel} {#python m.findLabel("%1")};
+#alias {mvnum} {#python m.findVnum("%1")};
 #alias {mmove} {#python m.move("$room[dir]", "$room[id]", "$room[name]", """$room[desc]""")};
 
 #var {room[dir]} {};
