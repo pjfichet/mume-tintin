@@ -6,7 +6,8 @@ play with a good telnet client, a set of aliases and scripts, and a
 mapper. This project provides the aliases and scripts, made to work
 in conjuction with:
 - the tintin++ client (https://tintin.mudhalla.net/),
-- the (optionnal) mapperproxy-mume mapper
+- the mume-map mapper (https://github.com/pjfichet/mume-map).
+- or the mapperproxy-mume mapper
   (https://github.com/nstockton/mapperproxy-mume).
 
 Mume-tintin is a fork of an abandonned project named tintin-mume by
@@ -20,7 +21,11 @@ for his initial work.
 Edit the makefile and run `make install`.
 Copy the file character.tin to your mume directory.
 Edit it.
-Run `mume /path/to/character.tin`.
+
+If you're using mume-map, run `tintin /path/to/character.tin`.
+
+If you're using mapperprox-mume, run `mume /path/to/character.tin`.
+
 A logfile will be created at ./log/character_name/YYYYMMDD.log
 
 # Aliases (todo)
