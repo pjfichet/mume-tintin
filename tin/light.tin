@@ -58,7 +58,6 @@
 	#action {^Ok.$} {
 		#unaction {^Ok.$};
 		#var {light} {off};
-		#showme {<279>You feel hidden.<099>};
 	};
 	#delay {25} {#unaction {^Ok.$}};
 };
