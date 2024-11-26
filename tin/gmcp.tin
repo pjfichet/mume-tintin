@@ -11,7 +11,7 @@
 #event {IAC WILL GMCP} {
 	#send {$telnet[iac]$telnet[do]$telnet[gmcp]};
 	gmcp Core.Hello {"client":"$info[SYSTEM][CLIENT_NAME]", "version":"$info[SYSTEM][CLIENT_VERSION]"};
-    gmcp Core.Supports.Set [ "Char 1", "Char.Vitals 1", "Room 1", "Room.Info 1", "Event 1", "Event.Moved 1" ];
+    gmcp Core.Supports.Set [ "Char 1", "Char.Vitals 1", "Char.StatusVars 1", "Room 1", "Room.Info 1", "Event 1", "Event.Moved 1" ];
 };
 
 #event {IAC SB GMCP Char.Vitals IAC SE} {
@@ -26,7 +26,19 @@
 	};
 };
 
+#event {IAC SB GMCP Char.StatusVars IAC SE} {
+	#var gmcpvar {%0};
+	#foreach {*gmcpvar[%*]} {i} {
+		#if {"$gmcpvar[$i]" == "null"} {
+			#var {status[$i]} {}
+		};
+		#else {
+			#var {status[$i]} {$gmcpvar[$i]}
+		};
+	};
+};
 
+#nop char.Vitals
 #var {vitals[alertness]} {};
 #var {vitals[buffer-hits]} {};
 #var {vitals[buffer]} {};
@@ -58,3 +70,14 @@
 #var {vitals[tp]} {};
 #var {vitals[weather]} {};
 #var {vitals[xp]} {};
+
+#nop char.StatusVars
+#var {status[fullname]} {};
+#var {status[level]} {};
+#var {status[name]} {};
+#var {status[next-level-tp]} {};
+#var {status[next-level-xp]} {};
+#var {status[race]} {};
+#var {status[subclass]} {};
+#var {status[subrace]} {};
+

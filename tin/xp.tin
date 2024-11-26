@@ -7,22 +7,19 @@
 #var {old_xp} {0}
 #var {old_tp} {0}
 
-#action {^XPCOUNTER: %d %d %d %d %w.$} {
-	#if {$old_xp} {#math {gained_xp} {%1 - $old_xp}};
-	#if {$old_tp} {#math {gained_tp} {%2 - $old_tp}};
+#alias {_xp} {
+	#if {$old_xp} {#math {gained_xp} {$vitals[xp] - $old_xp}};
+	#if {$old_tp} {#math {gained_tp} {$vitals[tp] - $old_tp}};
 	#math {session_xp} {$session_xp + $gained_xp};
 	#math {session_tp} {$session_tp + $gained_tp};
-	#var {old_xp} {%1};
-	#var {old_tp} {%2};
-	#var {needed_xp} {%3};
-	#var {needed_tp} {%4};
-	#if {"%5" == "xp"} {
-		#echo {Gained tp: $gained_tp, session tp: $session_tp, needed tp: $needed_tp.};
-		#echo {Gained xp: $gained_xp, session xp: $session_xp, needed xp: $needed_xp.};
-	};
-	#else {#echo {Needed tp: $needed_tp, needed xp: $needed_xp.}};
-	#line gag;
+	#math {needed_tp} {$status[next-level-tp] - $vitals[tp]};
+	#math {needed_xp} {$status[next-level-xp] - $vitals[xp]};
+	#var {old_xp} {$vitals[xp]};
+	#var {old_tp} {$vitals[tp]};
+};
+
+#alias {xp} {
+	_xp;
+	#echo {Gained tp: $gained_tp, session tp: $session_tp, needed tp: $needed_tp.};
+	#echo {Gained xp: $gained_xp, session xp: $session_xp, needed xp: $needed_xp.};
 }
-
-#alias {xp} {#send {info XPCOUNTER: %x %t %X %T xp.}};
-
