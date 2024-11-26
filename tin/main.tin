@@ -47,8 +47,8 @@
 
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
+	log;
 	#send {change pager off};
-	#send {info CHARNAME: %M.};
 	#send {change wimpy $wimpy};
 	#send {time};
 	_xp;
