@@ -11,6 +11,7 @@
 #alias {ckl} {keyl};
 #alias {ckf} {castlocatelife %0};
 #alias {ckw} {castwatchroom %0};
+#alias {cks} {castscry %0};
 #alias {ct} {castteleport %0};
 #alias {c1} {castteleport 1};
 #alias {c2} {castteleport 2};
@@ -43,6 +44,10 @@
 #alias {castteleport} {
 	#if {"%0" == ""} {cast 'teleport' $vkeys[1][key]};
 	#else {cast 'teleport' $vkeys[%0][key]};
+}
+#alias {castscry} {
+	#if {"%0" == ""} {cast 'scry'};
+	#else {cast 'scry' $vkeys[%0][key]};
 }
 #alias {castwatchroom} {
 	#if {"%0" == ""} {
@@ -99,14 +104,13 @@
 		#math {j} {%2};
 		#echo {Deleting keys $i to $j\.};
 		#while {$i <= $j} {
-			#echo {del $i};
 			#unvar {vkeys[$i]};
 			#math {i} {$i + 1};
 		};
 	};
 	#else {
 		#nop delete %1;
-		#echo {Deleting key %1.};
+		#echo {Deleting key "%1".};
 		#unvar {vkeys[%1]};
 	};
 };
