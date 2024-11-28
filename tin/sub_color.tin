@@ -27,6 +27,7 @@
 #nop You are trapped by some roots.
 
 #nop Map
+#highlight {^It is pitch black...$} {green}
 #highlight {you enter the enchanted forest.$} {bold green}
 #highlight {^The white ship docks} {bold green}
 #highlight {^The ship is now docked} {bold green}
@@ -104,8 +105,11 @@
 #sub {{Orc|Troll|Man|Woman|Elf|Half-Elf|Dwarf|Hobbit|Bear|Numenorean|N\xFAmen\xF3rean|Númenórean}* leaves {north|south|west|east|up|above|down|below}} {<179>%1*<099> leaves <149>%2<099>}
 
 #nop sub {^%* has arrived from {the north|the south|the west|the east|above|below}{ riding .*| sneaking|}.$} {%1 has <149>arrived<099> from <099>%2<099>%3<099>.}
-#sub {^%* leaves {north|south|west|east|up|down|above|below}{ riding .*| sneaking|}.$} {%1 leaves <049>%2<099>%3<099>.}
-#nop sub {^%* has suddenly arrived.} {%1 has suddenly <149>arrived<099>.}
+#nop sub {^%* leaves {north|south|west|east|up|down|above|below}{ riding .*| sneaking|}.$} {%1 leaves <049>%2<099>%3<099>.}
+
+#sub {has arrived from {the north|the south|the west|the east|above|below}} {has <049>arrived<099> from <099>%1<099>}
+#sub {leaves {north|south|west|east|up|down|above|below}} {leaves <049>%1<099>}
+#sub {has suddenly arrived.$} {has suddenly <049>arrived<099>.}
 
 #sub {^You hear a death cry from {the |}{north|south|west|east|above|below}.$} {You hear a <139>death cry<099> from %1<139>%2<099>.}
 
@@ -182,8 +186,7 @@
 #highlight {^For a successful backstab you need to be wielding a suitable weapon.$} {light red}
 #nop sub {^%* makes a strange sound{(?: but is suddenly very silent)?}, as you place %* in {his|her|its} back.$}
 #nop {%1<099> makes a <129>strange sound<099>%2, as you place %3 in %4 back.};
-#sub {^%* makes a strange sound}
-{%1<099> makes a <129>strange sound<099>};
+#sub {^%* makes a strange sound} {%1<099> makes a <129>strange sound<099>};
 #sub {^Suddenly %* stabs you in the back.$} {<119>%0<099>};
 #sub {^Oops} {<119>Oops<099>}
 #nop highlight {^Oops, your victim caught you by surprise!$} {light red}
