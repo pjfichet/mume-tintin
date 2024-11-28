@@ -207,15 +207,15 @@
 #alias {te} {tell %0};
 
 #nop track
-#alias {tm} {lightor; showsend track man*};
-#alias {to} {lightor; showsend track orc*};
 #alias {tr} {lightor; showsend track};
-#alias {tt} {lightor; showsend track troll*};
-#alias {tk} {lightor; #if {"%1" != ""} {target %1}; showsend track $target};
-#alias {tv} {lightor; #if {"%1" != ""} {target %1}; showsend track $target};
-#alias {tw} {lightor; showsend track woman*};
-#alias {tz} {lightor; showsend track zaugurz*};
-#alias {tmo} {lightor; #if {"%1" != ""} {mount %1}; showsend track $mount};
+#alias {trm} {lightor; showsend track man*};
+#alias {tro} {lightor; showsend track orc*};
+#alias {trt} {lightor; showsend track troll*};
+#alias {trk} {lightor; #if {"%1" != ""} {target %1}; showsend track $target};
+#alias {trv} {lightor; #if {"%1" != ""} {target %1}; showsend track $target};
+#alias {trw} {lightor; showsend track woman*};
+#alias {trz} {lightor; showsend track zaugurz*};
+#alias {trmo} {lightor; #if {"%1" != ""} {mount %1}; showsend track $mount};
 
 #nop time
 #alias {ti} {_time_short}
