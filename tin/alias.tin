@@ -186,7 +186,7 @@
 #alias {sn} {showsend scout d};
 #alias {su} {showsend scout u};
 #alias {sr} {showsend seek rivendell};
-#alias {ss} {showsend sneak; lightoff};
+#alias {ss} {showsend sneak; lightoff_sneak};
 
 #nop shoot
 #alias {s} {shoottarget};
