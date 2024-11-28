@@ -47,12 +47,13 @@
 	#else {
 		#if { "$vitals[mood]" == "wimpy"} {
 			change mood aggressive;
+			#echo {<279>Change mood aggressive: $wimpy\.<099>};
 		};
 		#elseif { "$vitals[mood]" == "aggressive"} {
 			change mood wimpy;
+			#echo {<279>Change mood wimpy: $wimpy\.<099>};
 		};
 	};
-	#echo {<279>Change mood $vitals[mood]: $wimpy\.<099>};
 };
 
 #alias {rec} {
