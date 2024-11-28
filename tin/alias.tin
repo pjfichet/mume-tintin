@@ -219,6 +219,8 @@
 
 #nop time
 #alias {ti} {_time_short}
+#alias {tl} {_time_long}
+#alias {tf} {_time_full}
 
 #nop target
 #alias {va} {target 1 animal};

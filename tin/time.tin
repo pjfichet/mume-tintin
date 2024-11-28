@@ -1,3 +1,19 @@
+#gag {^According to the %* calendar, it is:$};
+#gag {^Real time is %* UTC.$};
+#gag {^Last reboot after an automatic reboot at %* UTC.$};
+
+#alias {_time_full} {
+	#ungag {^According to the %* calendar, it is:$};
+	#ungag {^Real time is %* UTC.$};
+	#ungag {^Last reboot after an automatic reboot at %* UTC.$};
+	#send {time};
+	#delay {2} {
+		#gag {^According to the %* calendar, it is:$};
+		#gag {^Real time is %* UTC.$};
+		#gag {^Last reboot after an automatic reboot at %* UTC.$};
+	};
+}
+
 #alias {_time_check} {
 	#if {"$current_month" == "0"} {#var {current_month} {1}};
 	#if {$current_hour < $months[$current_month][dawn]} {
@@ -44,23 +60,22 @@
 
 #alias _time_short {
 	_time_check;
-	#echo {Game time: %s, dawn: %sh, dusk: %sh.}
-		{$current_time} {$months[$current_month][dawn]} {$months[$current_month][dusk]};
-	#echo {Time left until %s is less than %s tick%s}
-		{$next_state} {$till_next_state} {$tmpNextStatePretty};
+	#echo {It is <029>%s<099>, time left until %s is less than <029>%s<099> tick%s}
+		{$current_time} {$next_state} {$till_next_state} {$tmpNextStatePretty};
 };
 
 #alias _time_send {
 	_time_check;
-	#send {%1 Game time: %s, dawn: %sh, dusk: %sh.}
-		{$current_time} {$months[$current_month][dawn]} {$months[$current_month][dusk]};
-	#send {%1 Time left until %s is less than %s tick%s}
-		{$next_state} {$till_next_state} {$tmpNextStatePretty};
+	#send {%1 It is <029>%s<099>, time left until %s is less than <029>%s<099> tick%s}
+		{$current_time} {$next_state} {$till_next_state} {$tmpNextStatePretty};
 };
 
 #alias _time_long {
 	_time_short;
-	#echo {It is currently %s, in %s (%s).} {$current_state} {$current_month_name} {$months[$current_month][season]};
+	#echo {It is currently <029>%s<099>, in %s (<029>%s<099>).}
+		{$current_state} {$current_month_name} {$months[$current_month][season]};
+#echo {Dawn starts at <029>%s am<099>, and dusk at <029>%s pm<099>.}
+		{$months[$current_month][dawn]} {$months[$current_month][dusk]};
 	#math {in_mume_days} {((((($current_month-1)/3)*3 +3)-$current_month)*30)+(30-$current_day)+(1-($current_hour/24))};
 	#if {"$in_mume_days" != "1"} {#var {in_mume_days_pretty} {s}};
 	#else {#var {in_mume_days_pretty} {}};
@@ -228,7 +243,7 @@
 #var months[24] {{name}{Girithron}}
 
 #var {current_month} {1}
-#var {current_month_name} {}
+#var {current_month_name} {Narwain}
 #var {current_hour} {0}
 #var {current_day} {0}
 #var {current_year} {0}
