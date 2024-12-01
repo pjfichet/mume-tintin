@@ -16,7 +16,9 @@
 #alias {mnote} {#python m.findNote("%1")};
 #alias {mlabel} {#python m.findLabel("%1")};
 #alias {mvnum} {#python m.findVnum("%1")};
-#alais {mingredient} {#python m.findIngredient("%1")};
+#alias {mname} {#python m.findName("%0")};
+#alias {mingredient} {#python m.findIngredient("%1")};
+#alias {mclear} {#python m.unhighlight()};
 #alias {mplayer} {#python m.player("%1")};
 
 #var {room[dir]} {};
