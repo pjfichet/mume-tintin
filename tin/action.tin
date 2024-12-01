@@ -1,7 +1,7 @@
 #action {^You set fire to the corpse.$} {showsend cover pyre}
 
-#action {^Anarwen says 'Would you help me, %1\?} {
-	#if {"%1" == "$name"} {#delay {1} {showsend say yes}};
+#action {^Anarwen says 'Would you help me, %1\?'$} {
+	#if {"%1" == "$name"} {#delay {.7} {showsend say yes Anarwen, I will help you.}};
 	#else {#showme Triggers but %1 != $name !};
 };
 
