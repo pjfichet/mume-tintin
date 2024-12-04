@@ -42,7 +42,6 @@
 }
 
 #event {PROGRAM START} {
-	#screen clear all;
 	mume;
 };
 
@@ -54,7 +53,5 @@
 	#send {time};
 	_xp;
 	mopen;
-	#screen clear all;
 	login;
-	#cr;
 };
