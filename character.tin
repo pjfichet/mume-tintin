@@ -10,6 +10,11 @@
 #nop path to mume-map:
 #var {mumemap} {/path/to/mumemap}
 
+#nop choose your mapper:
+#read $src/map.tin
+#nop read $src/proxy.tin
+#nop read $src/mume.tin
+
 #nop optional sidebar
 #read $src/sidebar.tin
 

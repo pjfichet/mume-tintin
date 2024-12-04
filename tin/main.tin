@@ -2,8 +2,6 @@
 #read $src/config.tin
 
 #nop map
-#read $src/map.tin;
-#nop read $src/proxy.tin
 
 #nop Substitutions
 #nop read $src/sub_herb.tin
@@ -32,19 +30,9 @@
 #read $src/quickref.tin;
 
 
-#alias {mume} {
-	#gts;
-	#nop ssl is like session;
-	#ssl {mume} {193.134.218.98} {4242};
-	$name;
-	$pass;
-	split;
-}
-
 #event {PROGRAM START} {
 	mume;
 };
-
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
 	log;
@@ -52,6 +40,6 @@
 	#send {change wimpy $wimpy};
 	#send {time};
 	_xp;
-	mopen;
 	login;
 };
+

@@ -1,25 +1,37 @@
-#nop mume mini map
+#nop mume-map
 
-#run {python} {$mumemap/venv/bin/python -B}
-#python from mumemap.map import Map
-#python m = Map()
-#python m.log('map.log', 3, True)
-#action {^map: %1$} {#@gts{$session} #showme {%1}};
-#gts;
+#alias {mume} {
+	#nop first start python session for the mapper;
+	#run {python} {$mumemap/venv/bin/python -B};
+	#nop beware, tintin will fire aliases here too;
+	#python from mumemap.map import Map;
+	#python map = Map();
+	#python map.log('map.log', 3, True);
+	#python map.open('map.json', 'labels.json');
+	#ssl {mume} {193.134.218.98} {4242};
+	$name;
+	$pass;
+	split;
+};
 
-#alias {mopen} {#python m.open('map.json')};
-#alias {mclose} {#python m.close()};
-#alias {mdump} {#python m.dump()};
-#alias {mmove} {#python m.move("$room[dir]", "$room[id]", "$room[name]", """$room[desc]""")};
-#alias {mroom} {#python m.room("$room[id]", "$room[name]", """$room[desc]""")};
-#alias {mpath} {#python m.path('%1')};
-#alias {mnote} {#python m.findNote("%1")};
-#alias {mlabel} {#python m.findLabel("%1")};
-#alias {mvnum} {#python m.findVnum("%1")};
-#alias {mname} {#python m.findName("%0")};
-#alias {mingredient} {#python m.findIngredient("%1")};
-#alias {mclear} {#python m.unhighlight()};
-#alias {mplayer} {#python m.player("%1")};
+#action {^map: %1$} {#mume #showme {%1}};
+
+#alias {mclose} {
+	#python map.close();
+	#python exit();
+};
+
+#alias {mdump} {#python map.dump()};
+#alias {mmove} {#python map.move("$room[dir]", "$room[id]", "$room[name]", """$room[desc]""")};
+#alias {mroom} {#python map.room("$room[id]", "$room[name]", """$room[desc]""")};
+#alias {mpath} {#python map.path('%1')};
+#alias {mnote} {#python map.findNote("%1")};
+#alias {mlabel} {#python map.findLabel("%1")};
+#alias {mvnum} {#python map.findVnum("%1")};
+#alias {mname} {#python map.findName("%0")};
+#alias {mflag} {#python map.findFlag("%1")};
+#alias {mclear} {#python map.unhighlight()};
+#alias {mplayer} {#python map.player("%1")};
 
 #var {room[dir]} {};
 #event {IAC SB GMCP Event.Moved IAC SE} {
@@ -39,21 +51,9 @@
 	#var {room[dir]} {};
 };
 
-
-#var {session} {gts}
-#event {SESSION CONNECTED} {
-	#gts #var {session} {%0};
-}
-
-#event {SESSION ACTIVATED} {
-	#gts #var {session} {%0};
-	#if {"%0" == "python"} {#gts};
-}
-
 #event {SESSION DISCONNECTED} {
-	#gts #var {session} {%0};
 	#if {"%0" == "mume"} {
-		#python m.close();
-		#gts;
+		#python map.close();
+		#python exit();
 	};
 };
