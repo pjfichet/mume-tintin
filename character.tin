@@ -21,17 +21,21 @@
 #nop main file
 #read $src/main.tin
 
-#nop Choose your class:
+#nop choose your class:
 #nop read $src/cleric.tin
-#nop read $src/mage.tin
+#read $src/mage.tin
 #nop read $src/warrior.tin
 
+#nop optional macros
+#read $src/macros.tin
+
 #nop the following is executed at startup
+#nop it can be used to set up variables and aliases
 #alias {login} {	
-	weapon dagger;
-	flask skin;
-	bag backpack;
-	lightsource lantern;
+	#var {weapon} {dagger};
+	#var {flask} {skin};
+	#var {bag} {backpack};
+	#var {lightsource} {lantern};
 	lighton;
 };
 
