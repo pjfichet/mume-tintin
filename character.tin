@@ -15,11 +15,11 @@
 #nop read $src/proxy.tin
 #nop read $src/mume.tin
 
-#nop optional sidebar
-#read $src/sidebar.tin
-
 #nop main file
 #read $src/main.tin
+
+#nop optional sidebar
+#read $src/sidebar.tin
 
 #nop choose your class:
 #nop read $src/cleric.tin

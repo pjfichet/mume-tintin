@@ -11,7 +11,6 @@
 	#ssl {mume} {193.134.218.98} {4242};
 	$name;
 	$pass;
-	split;
 };
 
 #action {^map: %1$} {#mume #showme {%1}};

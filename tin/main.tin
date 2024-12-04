@@ -35,6 +35,7 @@
 };
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
+	split;
 	log;
 	#send {change pager off};
 	#send {change wimpy $wimpy};
