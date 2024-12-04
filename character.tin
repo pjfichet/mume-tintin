@@ -10,6 +10,9 @@
 #nop path to mume-map:
 #var {mumemap} {/path/to/mumemap}
 
+#nop optional sidebar
+#read $src/sidebar.tin
+
 #nop main file
 #read $src/main.tin
 

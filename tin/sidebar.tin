@@ -1,0 +1,29 @@
+#alias {split} {
+	#nop this function overwrites the one in prompt.tin;
+	#config mouse on;
+	#event {SCROLLED MOUSE WHEEL UP} {#buffer {up} {%0}};
+	#event {SCROLLED MOUSE WHEEL DOWN} {#buffer {down} {%0}};
+	#event {CATCH SCREEN SPLIT FILL} {#nop};
+	#event {SCREEN RESIZE} {#screen clear all};
+	#split 0 2 2 26;
+	#screen clear all;
+};
+
+#var sidebar {1};
+#alias {sidebar} {
+	#draw <279> rounded box 2 -24 7 -2
+		{$room[area]}
+		{time   : $current_time}
+		{terrain: $room[environment]}
+		{weather: $vitals[light]$vitals[fog]$vitals[weather]};
+	#draw <279> rounded box 8 -24 19 -2
+		{pos   : $vitals[position]}
+		{cast  : $vitals[spell-effort]}
+		{alert : $vitals[alertness]}
+		{mood  : $vitals[mood]}
+		{flee  : $wimpy}
+		{weapon: $weapon}
+		{target: $tgt[$tkey][num].$tgt[$tkey][name]}
+		{mount : $mount}
+		{door  : $door}
+};

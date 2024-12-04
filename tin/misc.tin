@@ -71,6 +71,7 @@
 #alias {rent} {
 	#if { "%0" == "" } {
 		xp;
+		#unsplit;
 		#send {rent};
 	};
 	#else {

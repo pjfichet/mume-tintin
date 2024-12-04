@@ -1,9 +1,9 @@
-#nop split the screen;
-#event {CATCH SCREEN SPLIT FILL} {#nop};
-#split 0 2;
-#showme {} {-1};
-#showme {} {-2};
-#showme {} {-3};
+#alias {split} {
+	#nop this function can be overwritten in sidebar.tin;
+	#event {CATCH SCREEN SPLIT FILL} {#nop};
+	#split 0 2;
+	#screen clear all;
+};
 
 #nop gag the prompt
 #gag {^>$}
@@ -25,13 +25,10 @@
 		#var {prompt[sneak]} {<019>$vitals[sneak]<099>};
 	};
 
-
-	#format {prompt[state]} {%s%s%s mo:%s al:%s hp:%s mp:%s ma:%s > %s}
+	#format {prompt[state]} {%s%s%s hp:%s mp:%s ma:%s > %s}
 		{$prompt[light]}
 		{$prompt[sneak]}
 		{$prompt[ride]}
-		{$vitals[mood]}
-		{$vitals[alertness]}
 		{$vitals[hp-string]}
 		{$vitals[mp-string]}
 		{$vitals[mana-string]}
@@ -58,6 +55,8 @@
 		{$prompt[mount]}
 		{$prompt[buffer]}
 		{$prompt[opponent]};
+
+	#if {$sidebar == 1} {sidebar};
 
 	#showme {$prompt[room]} {-3};
 	#showme {$prompt[state]} {-2};

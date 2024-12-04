@@ -38,6 +38,7 @@
 	#ssl {mume} {193.134.218.98} {4242};
 	$name;
 	$pass;
+	split;
 }
 
 #event {PROGRAM START} {
