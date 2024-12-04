@@ -1,0 +1,7 @@
+#alias {mume} {
+	#nop ssl is like session;
+	#ssl {mume} {193.134.218.98} {4242};
+	$name;
+	$pass;
+	split;
+};
