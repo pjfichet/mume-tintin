@@ -36,11 +36,14 @@
 
 #action {^{Reconnecting|Welcome to the land of Middle-earth\. May your visit here be\.\.\. interesting}.$} {
 	split;
-	log;
-	#send {change pager off};
-	#send {change wimpy $wimpy};
-	#send {time};
-	_xp;
-	login;
+	#delay {1} {
+		log;
+		#nop look;
+		#send {change pager off};
+		#send {change wimpy $wimpy};
+		#send {time};
+		_xp;
+		login;
+	};
 };
 
