@@ -114,6 +114,7 @@
 
 #nop look around
 #alias {la} {showsend look around};
+#alias {li} {togglelight};
 
 #nop hide
 #alias {hq} {lightor; hide quick};
@@ -127,14 +128,15 @@
 #alias {ll} {lightor; look; exit; lightoff_sneak};
 
 #nop order charmies and mercs
-#alias {oa} {ask $follower assist};
+#alias {oa} {order $follower assist};
+#alias {or} {order $follower rest};
+#alias {os} {order $follower sleep};
+#alias {ow} {order $follower wake; order $follower stand};
 #alias {ob} {showsend bandage $follower};
 #alias {ocb} {showsend cast 'bless' $follower};
 #alias {ocl} {showsend cast 'cure light' $follower};
-#alias {oh} {ask $follower health};
-#alias {om} {ask $follower moves};
-#alias {or} {ask $follower ride %1};
-#alias {ot} {ask $follower time};
+#alias {ot} {ask $follower health; ask $follower moves; ask $follower time};
+#alias {oride} {ask $follower ride %1};
 #alias {ox} {showsend examine $follower};
 
 #nop path and go
@@ -234,7 +236,7 @@
 #alias {vr} {rtarget};
 #alias {vt} {target 1 troll*};
 #alias {vw} {target 1 woman*};
-#alias {vx} {exam};
+#alias {vx} {exam $target};
 #alias {vz} {target 1 zaugurz*};
 #alias {vvm} {target 1 man};
 #alias {vvo} {target 1 orc};
@@ -287,6 +289,8 @@
 #alias {bow} {weapon bow};
 #alias {smoke} {get pipe $bag; rem $weapon; hold pipe; sit; smoke pipe; stand; rem pipe; whield $weapon; put pipe $bag;};
 #alias {lembas} {get lembas all; eat lembas};
+
+#alias {x} {exam};
 
 #nop yes
 #alias {yes} {showsend say yes} {say yes};
