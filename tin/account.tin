@@ -1,0 +1,6 @@
+#nop config
+#read $src/config.tin
+
+#event {PROGRAM START} {
+	#ssl {mume} {193.134.218.98} {4242};
+};
