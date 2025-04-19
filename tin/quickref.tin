@@ -59,6 +59,7 @@ mk_quickref {cpe} {cast n 'protection from evil'};
 mk_quickref {crp} {cast n 'remove poison'};
 mk_quickref {csh} {cast n 'shroud'};
 mk_quickref {csl} {cast n 'sense life};
+mk_quickref {crl} {cast n 'create light' lantern};
 mk_quickref {o} {open door [a|<dir>|<door_name>]]};
 mk_quickref {c} {close door};
 mk_quickref {d} {set door};

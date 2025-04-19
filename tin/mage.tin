@@ -4,7 +4,7 @@
 
 #nop cast;
 #alias {ci} {showsend cast n 'lightning bolt' %0};
-#alias {clight} {showsend cast n 'create light' lantern};
+#alias {crl} {showsend cast n 'create light' lantern};
 #alias {ce} {showsend cast 'earthquake'};
 
 #alias {ck} {keys};
