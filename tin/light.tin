@@ -1,9 +1,10 @@
 #nop scout.tt
 
-#var {auto_light} {0}
+#var {auto_light} {off}
 #alias autolight {
-    #if {$auto_light == 0} {#var {auto_light} {1}};
-    #else {#var {auto_light} {0}};
+    #if {"$auto_light" == "off"} {#var {auto_light} {on}};
+    #else {#var {auto_light} {"off"}};
+    #showme {Auto light is $auto_light};
 };
 
 #var {lightsource} {lantern}
@@ -47,11 +48,11 @@
 #action {^Your light has gone out.$} {#var {light} {off}}
 
 #action {^The day has begun.$} {
-    #if {$auto_light == 1} {lightoff};
+    #if {"$auto_light" == "on"} {lightoff};
 };
 
 #action {^The night has begun.$} {
-    #if {$auto_light == 1} {lighton};
+    #if {"$auto_light" == "off"} {lighton};
 };
 
 #action {^You attempt to hide yourself.$} {
