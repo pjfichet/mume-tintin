@@ -15,6 +15,14 @@
 
 #action {^map: %1$} {#mume #showme {%1}};
 
+#alias {mopen} {
+	#python from mumemap.map import Map;
+	#python map = Map();
+	#python map.log('map.log', 3, True);
+	#python map.open('map.json', 'labels.json');
+}
+
+
 #alias {mclose} {
 	#python map.close();
 	#python exit();
@@ -25,7 +33,8 @@
 #alias {mroom} {#python map.room("$room[id]", "$room[name]", """$room[desc]""")};
 #alias {mpath} {#python map.path('%1')};
 #nop find note, name, label, vnum, flags
-#alias {mfind} {#python map.findRoom("%1", "%2")};
+#alias {mfind} {#python map.findRoom("%0")};
+#alias {minfo} {#python map.infoRoom("%1")};
 #alias {mclear} {#python map.unhighlight()};
 #alias {mplayer} {#python map.player("%1")};
 
