@@ -179,8 +179,8 @@
 
 #nop missiles
 #sub {^%* nocks a missile in %*.$} {%1 <139>nocks a missile<099> in %2.}
-#sub {^Argh! %*} {<119>Argh! %1<099>}
-#sub {^SNAP! %*} {<119>SNAP! %1<099>}
+#sub {^Argh!} {<119>Argh!<099>}
+#sub {^SNAP!} {<119>SNAP!<099>}
 
 #nop stab
 #highlight {^For a successful backstab you need to be wielding a suitable weapon.$} {light red}
