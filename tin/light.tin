@@ -3,7 +3,7 @@
 #var {auto_light} {off}
 #alias autolight {
     #if {"$auto_light" == "off"} {#var {auto_light} {on}};
-    #else {#var {auto_light} {"off"}};
+    #else {#var {auto_light} {off}};
     #showme {Auto light is $auto_light};
 };
 
@@ -52,7 +52,7 @@
 };
 
 #action {^The night has begun.$} {
-    #if {"$auto_light" == "off"} {lighton};
+    #if {"$auto_light" == "on"} {lighton};
 };
 
 #action {^You attempt to hide yourself.$} {
