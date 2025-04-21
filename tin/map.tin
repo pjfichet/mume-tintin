@@ -31,6 +31,7 @@
 #alias {mdump} {#python map.dump()};
 #alias {mmove} {#python map.move("$room[dir]", "$room[id]", "$room[name]", """$room[desc]""")};
 #alias {mroom} {#python map.room("$room[id]", "$room[name]", """$room[desc]""")};
+#alias {mdiff} {#python map.diff("$room[name]", """$room[desc]""")};
 #alias {mpath} {#python map.path('%1')};
 #nop find note, name, label, vnum, flags
 #alias {mfind} {#python map.findRoom("%0")};
@@ -49,6 +50,9 @@
 	#var {room[id]} {};
 	#var {room[name]} {};
 	#var {room[desc]} {};
+	#var {room[area]} {};
+	#var {room[environment]} {};
+	#var {room[exits]} {};
 	#foreach {*gmcpvar[%*]} {i} {
 		#var {room[$i]} {$gmcpvar[$i]};
 	};
